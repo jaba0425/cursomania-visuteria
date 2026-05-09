@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursomania – Bisutería</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      background: #f5f5f7;
+      color: #1d1d1f;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: #6e6e73;
+    }
+    .breadcrumb button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      color: #0066cc;
+      padding: 0;
+    }
+    .breadcrumb button:hover { text-decoration: underline; }
+
+    /* ── Main ── */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .page-title {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      line-height: 1.1;
+    }
+    .page-subtitle {
+      margin-top: 8px;
+      margin-bottom: 40px;
+      font-size: 17px;
+      color: #6e6e73;
+    }
+
+    /* ── Category grid ── */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .cat-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 28px 22px;
+      cursor: pointer;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    }
+    .cat-card:active { transform: scale(0.97); }
+    .cat-icon { font-size: 38px; line-height: 1; }
+    .cat-name { font-size: 16px; font-weight: 600; letter-spacing: -0.2px; }
+    .cat-arrow { font-size: 13px; color: #6e6e73; }
+
+    /* ── Back button ── */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 15px;
+      color: #0066cc;
+      padding: 0;
+      margin-bottom: 28px;
+    }
+    .back-btn:hover { text-decoration: underline; }
+
+    /* ── Video grid ── */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
+    }
+    .vid-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .vid-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    }
+    .vid-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #e5e5ea;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+    .vid-thumb img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .play-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.18s;
+    }
+    .vid-card:hover .play-overlay { opacity: 1; }
+    .play-circle {
+      width: 54px;
+      height: 54px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-circle svg { width: 22px; height: 22px; margin-left: 3px; }
+    .vid-info { padding: 14px 16px; }
+    .vid-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1d1d1f;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.4;
+    }
+
+    /* ── Modal ── */
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-bg.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+    }
+    .modal-close {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.85);
+      font-family: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.15s;
+    }
+    .modal-close:hover { color: #fff; }
+    .modal-player {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+      transform: scale(0.96);
+      transition: transform 0.25s ease;
+    }
+    .modal-bg.open .modal-player { transform: scale(1); }
+    .modal-player iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ── Loading / empty ── */
+    .state-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 0;
+      gap: 16px;
+      color: #6e6e73;
+      font-size: 16px;
+    }
+    .spinner {
+      width: 30px;
+      height: 30px;
+      border: 2px solid #d2d2d7;
+      border-top-color: #1d1d1f;
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .page-title { font-size: 28px; }
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .video-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="logo">Cursomania</span>
+    <div class="breadcrumb" id="breadcrumb"></div>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<div class="modal-bg" id="modal">
+  <div class="modal-wrap">
+    <button class="modal-close" onclick="closeModal()">✕&nbsp; Cerrar</button>
+    <div class="modal-player">
+      <iframe id="modal-iframe"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        sandbox="allow-scripts allow-same-origin allow-presentation">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+const API_KEY       = 'AIzaSyDQr4efF4RuysRJPZPb_A1MF-CFHNIkaTw';
+const ROOT_ID       = '12Y0aAfWoEiRxpdeSXryG9eJp9t7cCUlt';
+const DRIVE_FILES   = 'https://www.googleapis.com/drive/v3/files';
+
+const ICONS = {
+  'Collares': '📿', 'Pulseras': '✨', 'Llaveros': '🔑',
+  'Religiosos': '🕊️', 'Porcelana': '🫙', 'Macramé': '🧶',
+  'Aretes': '💎', 'Tobilleras': '🌸', 'De todo': '🎨',
+  'Anillos': '💍', 'Navidad': '🎄', 'Atrapasueños': '🌙',
+  'Porcelana fría': '🌺', 'Cartucheras': '🎒', 'Trucos': '💡'
+};
+
+// ── API helper ──────────────────────────────────────────────────────────────
+
+async function driveList(q, fields, extra = {}) {
+  const url = new URL(DRIVE_FILES);
+  const params = { q, fields, key: API_KEY, pageSize: 200, ...extra };
+  Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Drive API ${res.status}`);
+  const json = await res.json();
+  return json.files || [];
+}
+
+// ── Views ───────────────────────────────────────────────────────────────────
+
+function showLoading(msg) {
+  document.getElementById('main').innerHTML =
+    `<div class="state-block"><div class="spinner"></div><span>${msg}</span></div>`;
+}
+
+function showError(msg) {
+  document.getElementById('main').innerHTML =
+    `<div class="state-block">⚠️ ${msg}</div>`;
+}
+
+async function showCategories() {
+  showLoading('Cargando categorías…');
+  setBreadcrumb(null);
+
+  let folders;
+  try {
+    folders = await driveList(
+      `'${ROOT_ID}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false`,
+      'files(id,name)',
+      { orderBy: 'name' }
+    );
+  } catch (e) {
+    return showError(e.message);
+  }
+
+  if (!folders.length) {
+    document.getElementById('main').innerHTML =
+      `<div class="state-block">No se encontraron categorías.</div>`;
+    return;
+  }
+
+  const cards = folders.map(f => {
+    const icon = ICONS[f.name] ?? '📁';
+    return `<div class="cat-card" onclick="showVideos('${f.id}','${escHtml(f.name)}')">
+      <span class="cat-icon">${icon}</span>
+      <span class="cat-name">${escHtml(f.name)}</span>
+      <span class="cat-arrow">Ver videos →</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('main').innerHTML = `
+    <h1 class="page-title">Cursomania</h1>
+    <p class="page-subtitle">Selecciona una categoría</p>
+    <div class="category-grid">${cards}</div>
+  `;
+}
+
+async function showVideos(folderId, folderName) {
+  showLoading('Cargando videos…');
+  setBreadcrumb(folderName, folderId);
+
+  let videos;
+  try {
+    videos = await driveList(
+      `'${folderId}' in parents and mimeType contains 'video/' and trashed=false`,
+      'files(id,name,thumbnailLink)',
+      { orderBy: 'name' }
+    );
+  } catch (e) {
+    return showError(e.message);
+  }
+
+  let videosHtml = '';
+  if (videos.length) {
+    videosHtml = `<div class="video-grid">
+      ${videos.map(v => {
+        const thumb = v.thumbnailLink
+          ? `<img src="${v.thumbnailLink}" alt="" loading="lazy" onerror="this.remove()">`
+          : '🎬';
+        const displayName = v.name.replace(/\.[^.]+$/, '');
+        return `<div class="vid-card" onclick="openVideo('${v.id}','${escHtml(v.name)}')">
+          <div class="vid-thumb">
+            ${thumb}
+            <div class="play-overlay">
+              <div class="play-circle">
+                <svg viewBox="0 0 24 24" fill="#1d1d1f"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="vid-info">
+            <p class="vid-name">${escHtml(displayName)}</p>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  } else {
+    videosHtml = `<div class="state-block">No hay videos en esta categoría.</div>`;
+  }
+
+  const count = videos.length;
+  document.getElementById('main').innerHTML = `
+    <button class="back-btn" onclick="showCategories()">← Categorías</button>
+    <h1 class="page-title">${escHtml(folderName)}</h1>
+    <p class="page-subtitle">${count} ${count === 1 ? 'video' : 'videos'}</p>
+    ${videosHtml}
+  `;
+}
+
+// ── Modal ────────────────────────────────────────────────────────────────────
+
+function openVideo(fileId, name) {
+  const modal  = document.getElementById('modal');
+  const iframe = document.getElementById('modal-iframe');
+  iframe.src = `https://drive.google.com/file/d/${fileId}/preview?rm=minimal`;
+  modal.classList.add('open');
+  document.title = name.replace(/\.[^.]+$/, '') + ' – Cursomania';
+}
+
+function closeModal() {
+  const modal  = document.getElementById('modal');
+  const iframe = document.getElementById('modal-iframe');
+  modal.classList.remove('open');
+  setTimeout(() => { iframe.src = ''; }, 280);
+  document.title = 'Cursomania – Bisutería';
+}
+
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── Breadcrumb ───────────────────────────────────────────────────────────────
+
+function setBreadcrumb(categoryName) {
+  const el = document.getElementById('breadcrumb');
+  el.innerHTML = categoryName
+    ? `<button onclick="showCategories()">Inicio</button>
+       <span>›</span>
+       <span>${escHtml(categoryName)}</span>`
+    : '';
+}
+
+// ── Util ─────────────────────────────────────────────────────────────────────
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// ── Boot ─────────────────────────────────────────────────────────────────────
+
+showCategories();
+</script>
+</body>
+</html>
