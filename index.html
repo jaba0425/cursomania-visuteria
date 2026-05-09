@@ -254,6 +254,7 @@
       overflow: hidden;
       transform: scale(0.96);
       transition: transform 0.25s ease;
+      position: relative;
     }
     .modal-bg.open .modal-player { transform: scale(1); }
     .modal-player iframe {
@@ -261,6 +262,59 @@
       height: 100%;
       border: none;
       display: block;
+    }
+
+    /* ── YouTube custom controls ── */
+    #yt-frame { width: 100%; height: 100%; }
+    #yt-frame iframe { width: 100% !important; height: 100% !important; border: none; }
+    .yt-controls {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 52px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 16px;
+      border-radius: 0 0 14px 14px;
+      z-index: 10;
+    }
+    .yt-play-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      opacity: 0.9;
+      transition: opacity 0.15s;
+    }
+    .yt-play-btn:hover { opacity: 1; }
+    .yt-play-btn svg { width: 22px; height: 22px; }
+    .yt-progress-wrap {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+    }
+    .yt-progress-wrap:hover { height: 6px; }
+    .yt-progress-fill {
+      height: 100%;
+      background: #fff;
+      border-radius: 2px;
+      width: 0%;
+      pointer-events: none;
+      transition: width 0.1s linear;
+    }
+    .yt-time {
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }
 
     /* ── Loading / states ── */
@@ -311,11 +365,25 @@
     <span class="modal-title" id="modal-title"></span>
     <button class="modal-close" id="modal-close-btn">✕ Cerrar</button>
   </div>
-  <div class="modal-player">
-    <iframe id="modal-iframe"
-      allow="autoplay; fullscreen; encrypted-media"
-      allowfullscreen>
-    </iframe>
+
+  <!-- Drive player -->
+  <div class="modal-player" id="drive-modal">
+    <iframe id="modal-iframe" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe>
+  </div>
+
+  <!-- YouTube player con controles propios -->
+  <div class="modal-player" id="yt-modal" style="display:none">
+    <div id="yt-frame"></div>
+    <div class="yt-controls">
+      <button class="yt-play-btn" id="yt-play-btn" title="Play / Pause">
+        <svg id="yt-play-icon" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="yt-pause-icon" viewBox="0 0 24 24" fill="white" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+      <div class="yt-progress-wrap" id="yt-progress-wrap">
+        <div class="yt-progress-fill" id="yt-progress-fill"></div>
+      </div>
+      <span class="yt-time" id="yt-time">0:00 / 0:00</span>
+    </div>
   </div>
 </div>
 
@@ -519,14 +587,23 @@ async function showVideos(folderId, folderName) {
   grid.className = 'video-grid';
 
   videos.forEach(v => {
-    const vidName = v.name.replace(/\.[^.]+$/, '');
+    const isYT  = v.name.toLowerCase().endsWith('.youtube');
+    const ytId  = isYT ? (v.name.match(/\[([A-Za-z0-9_-]{11})\]/) || [])[1] : null;
+    if (isYT && !ytId) return; // archivo .youtube mal nombrado, ignorar
+
+    const vidName = v.name.replace(/\.[^.]+$/, '').replace(/\s*\[[A-Za-z0-9_-]+\]\s*$/, '').trim();
+    const thumb   = isYT
+      ? `<img src="https://img.youtube.com/vi/${ytId}/mqdefault.jpg" alt="" loading="lazy">`
+      : (v.thumbnailLink ? `<img src="${esc(v.thumbnailLink)}" alt="" loading="lazy" onerror="this.remove()">` : '🎬');
+
     const card = document.createElement('div');
-    card.className = 'vid-card';
-    card.dataset.id   = v.id;
+    card.className    = 'vid-card';
+    card.dataset.id   = isYT ? ytId : v.id;
     card.dataset.name = vidName;
+    card.dataset.type = isYT ? 'youtube' : 'drive';
     card.innerHTML = `
       <div class="vid-thumb">
-        ${v.thumbnailLink ? `<img src="${esc(v.thumbnailLink)}" alt="" loading="lazy" onerror="this.remove()">` : '🎬'}
+        ${thumb}
         <div class="play-overlay">
           <div class="play-circle">
             <svg viewBox="0 0 24 24" fill="#1d1d1f"><path d="M8 5v14l11-7z"/></svg>
@@ -542,38 +619,131 @@ async function showVideos(folderId, folderName) {
 
   grid.addEventListener('click', e => {
     const card = e.target.closest('.vid-card');
-    if (card) openVideo(card.dataset.id, card.dataset.name);
+    if (!card) return;
+    card.dataset.type === 'youtube'
+      ? openYouTube(card.dataset.id, card.dataset.name)
+      : openVideo(card.dataset.id, card.dataset.name);
   });
 
   container.appendChild(grid);
 }
 
-// ── Modal ────────────────────────────────────────────────────────────────────
+// ── Drive modal ───────────────────────────────────────────────────────────────
 
 function openVideo(fileId, name) {
-  const modal  = document.getElementById('modal');
-  const iframe = document.getElementById('modal-iframe');
-  document.getElementById('modal-title').textContent = name;
-  iframe.src = `https://drive.google.com/file/d/${fileId}/preview?rm=minimal`;
-  modal.classList.add('open');
+  document.getElementById('drive-modal').style.display = 'block';
+  document.getElementById('yt-modal').style.display    = 'none';
+  document.getElementById('modal-title').textContent   = name;
+  document.getElementById('modal-iframe').src =
+    `https://drive.google.com/file/d/${fileId}/preview?rm=minimal`;
+  document.getElementById('modal').classList.add('open');
 }
 
+// ── YouTube modal ─────────────────────────────────────────────────────────────
+
+let ytPlayer      = null;
+let ytPollTimer   = null;
+
+const ytApiReady = new Promise(resolve => {
+  window.onYouTubeIframeAPIReady = resolve;
+  const s = document.createElement('script');
+  s.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(s);
+});
+
+function fmtTime(s) {
+  s = Math.floor(s || 0);
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+}
+
+function setYTPlayIcon(playing) {
+  document.getElementById('yt-play-icon').style.display  = playing ? 'none'  : 'block';
+  document.getElementById('yt-pause-icon').style.display = playing ? 'block' : 'none';
+}
+
+function updateYTProgress() {
+  if (!ytPlayer?.getCurrentTime) return;
+  try {
+    const cur = ytPlayer.getCurrentTime();
+    const dur = ytPlayer.getDuration();
+    document.getElementById('yt-progress-fill').style.width =
+      dur ? `${(cur / dur) * 100}%` : '0%';
+    document.getElementById('yt-time').textContent =
+      `${fmtTime(cur)} / ${fmtTime(dur)}`;
+  } catch {}
+}
+
+async function openYouTube(videoId, name) {
+  await ytApiReady;
+
+  document.getElementById('drive-modal').style.display = 'none';
+  document.getElementById('yt-modal').style.display    = 'block';
+  document.getElementById('modal-title').textContent   = name;
+  document.getElementById('modal').classList.add('open');
+
+  // Reset UI
+  document.getElementById('yt-progress-fill').style.width = '0%';
+  document.getElementById('yt-time').textContent = '0:00 / 0:00';
+  setYTPlayIcon(false);
+
+  // Detener reproductor anterior
+  if (ytPollTimer)  { clearInterval(ytPollTimer); ytPollTimer = null; }
+  if (ytPlayer)     { try { ytPlayer.destroy(); } catch {} ytPlayer = null; }
+
+  // Recrear div destino (YT lo reemplaza)
+  const frame = document.getElementById('yt-frame');
+  frame.innerHTML = '<div id="yt-inner" style="width:100%;height:100%"></div>';
+
+  ytPlayer = new YT.Player('yt-inner', {
+    videoId,
+    width: '100%',
+    height: '100%',
+    playerVars: {
+      autoplay: 1, controls: 0, rel: 0,
+      modestbranding: 1, iv_load_policy: 3,
+      disablekb: 0, fs: 1, playsinline: 1,
+      origin: location.origin
+    },
+    events: {
+      onReady(e) {
+        e.target.playVideo();
+        ytPollTimer = setInterval(updateYTProgress, 500);
+      },
+      onStateChange(e) {
+        setYTPlayIcon(e.data === YT.PlayerState.PLAYING);
+        if (e.data === YT.PlayerState.ENDED) setYTPlayIcon(false);
+      }
+    }
+  });
+}
+
+document.getElementById('yt-play-btn').addEventListener('click', () => {
+  if (!ytPlayer) return;
+  ytPlayer.getPlayerState() === YT.PlayerState.PLAYING
+    ? ytPlayer.pauseVideo()
+    : ytPlayer.playVideo();
+});
+
+document.getElementById('yt-progress-wrap').addEventListener('click', e => {
+  if (!ytPlayer?.getDuration) return;
+  const rect = e.currentTarget.getBoundingClientRect();
+  ytPlayer.seekTo(((e.clientX - rect.left) / rect.width) * ytPlayer.getDuration(), true);
+});
+
+// ── Cerrar modal ─────────────────────────────────────────────────────────────
+
 function closeModal() {
-  const modal  = document.getElementById('modal');
-  const iframe = document.getElementById('modal-iframe');
-  modal.classList.remove('open');
-  setTimeout(() => { iframe.src = ''; }, 280);
+  document.getElementById('modal').classList.remove('open');
+  setTimeout(() => { document.getElementById('modal-iframe').src = ''; }, 280);
+  if (ytPollTimer)  { clearInterval(ytPollTimer); ytPollTimer = null; }
+  if (ytPlayer)     { try { ytPlayer.stopVideo(); } catch {} }
 }
 
 document.getElementById('modal-close-btn').addEventListener('click', closeModal);
-
 document.getElementById('modal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeModal();
 });
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 // ── Utils ─────────────────────────────────────────────────────────────────────
 
