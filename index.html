@@ -262,21 +262,32 @@
     #yt-frame { width: 100%; height: 100%; }
     #yt-frame iframe { width: 100% !important; height: 100% !important; border: none; }
 
-    /* Bloquea clics en elementos de YouTube (título, logo) sin interferir con nuestros controles */
+    /* Bloquea clics en elementos de YouTube sin interferir con nuestros controles */
     .yt-click-blocker {
       position: absolute;
       inset: 0;
       z-index: 5;
       background: transparent;
-      /* Cubre la zona del título de YouTube con una barra negra */
+      transition: background 0.15s;
     }
+    /* Barra negra superior: cubre el título de YouTube */
     .yt-click-blocker::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 48px;
+      height: 64px;
       background: #000;
       border-radius: 14px 14px 0 0;
+    }
+    /* Cubre el logo de YouTube (esquina superior derecha) */
+    .yt-click-blocker::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 140px;
+      height: 80px;
+      background: #000;
+      border-radius: 0 14px 0 0;
     }
 
     .yt-controls {
@@ -533,6 +544,15 @@ function showVideos(catIdx) {
 
 let ytPlayer    = null;
 let ytPollTimer = null;
+let ytFlashTimer = null;
+
+function ytFlash() {
+  const b = document.querySelector('.yt-click-blocker');
+  if (!b) return;
+  b.style.background = '#000';
+  if (ytFlashTimer) clearTimeout(ytFlashTimer);
+  ytFlashTimer = setTimeout(() => { b.style.background = 'transparent'; }, 700);
+}
 
 const ytApiReady = new Promise(resolve => {
   window.onYouTubeIframeAPIReady = resolve;
@@ -604,6 +624,7 @@ async function openYouTube(videoId, name) {
 
 document.getElementById('yt-play-btn').addEventListener('click', () => {
   if (!ytPlayer) return;
+  ytFlash();
   ytPlayer.getPlayerState() === YT.PlayerState.PLAYING
     ? ytPlayer.pauseVideo()
     : ytPlayer.playVideo();
@@ -611,6 +632,7 @@ document.getElementById('yt-play-btn').addEventListener('click', () => {
 
 document.getElementById('yt-progress-wrap').addEventListener('click', e => {
   if (!ytPlayer?.getDuration) return;
+  ytFlash();
   const rect = e.currentTarget.getBoundingClientRect();
   ytPlayer.seekTo(((e.clientX - rect.left) / rect.width) * ytPlayer.getDuration(), true);
 });
