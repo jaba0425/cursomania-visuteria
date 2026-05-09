@@ -455,6 +455,19 @@
     .yt-fs-btn:hover { opacity: 1; }
     .yt-fs-btn svg { width: 20px; height: 20px; }
 
+    /* ── Modo pantalla completa (CSS) ── */
+    .modal-bg.fs-mode {
+      padding: 8px 8px 8px;
+    }
+    .modal-bg.fs-mode .modal-player {
+      max-width: 100%;
+      aspect-ratio: unset;
+      flex: 1;
+      height: 0;
+      min-height: 0;
+      border-radius: 8px;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 600px) {
       .page-title { font-size: 28px; }
@@ -862,11 +875,11 @@ document.getElementById('yt-progress-wrap').addEventListener('click', e => {
   ytPlayer.seekTo(((e.clientX - rect.left) / rect.width) * ytPlayer.getDuration(), true);
 });
 
-// Pantalla completa (nativa + fallback CSS para iOS)
+// Pantalla completa — expande el modal completo (toolbar + player)
 const fsBtn      = document.getElementById('yt-fs-btn');
 const fsIcon     = document.getElementById('yt-fs-icon');
 const fsExitIcon = document.getElementById('yt-fs-exit-icon');
-const fsPlayer   = document.getElementById('yt-modal');
+const modalBg    = document.getElementById('modal');
 let   cssFs      = false;
 
 function setFsIcon(on) {
@@ -874,55 +887,30 @@ function setFsIcon(on) {
   fsExitIcon.style.display = on ? 'block' : 'none';
 }
 
-function enterCssFs() {
+function enterFs() {
   cssFs = true;
-  fsPlayer.style.cssText = `
-    position:fixed;inset:0;width:100vw!important;height:100vh!important;
-    max-width:none;border-radius:0;z-index:2000;aspect-ratio:unset;
-  `;
-  document.getElementById('modal').style.zIndex = '1999';
+  modalBg.classList.add('fs-mode');
   setFsIcon(true);
+  // Sugerir rotar el teléfono si está en portrait
+  if (screen.orientation?.lock) screen.orientation.lock('landscape').catch(() => {});
 }
 
-function exitCssFs() {
+function exitFs() {
   cssFs = false;
-  fsPlayer.style.cssText = '';
-  document.getElementById('modal').style.zIndex = '';
+  modalBg.classList.remove('fs-mode');
   setFsIcon(false);
+  if (screen.orientation?.unlock) screen.orientation.unlock();
 }
 
-fsBtn.addEventListener('click', () => {
-  // Salir de pantalla completa
-  if (document.fullscreenElement || document.webkitFullscreenElement) {
-    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
-    return;
-  }
-  if (cssFs) { exitCssFs(); return; }
-
-  // Intentar API nativa
-  const req = fsPlayer.requestFullscreen || fsPlayer.webkitRequestFullscreen;
-  if (req) {
-    req.call(fsPlayer).catch(() => enterCssFs());
-  } else {
-    // iOS Safari: fallback CSS
-    enterCssFs();
-  }
-});
-
-document.addEventListener('fullscreenchange', () => {
-  setFsIcon(!!(document.fullscreenElement));
-});
-document.addEventListener('webkitfullscreenchange', () => {
-  setFsIcon(!!(document.webkitFullscreenElement));
-});
+fsBtn.addEventListener('click', () => cssFs ? exitFs() : enterFs());
 
 // ── Cerrar modal ──────────────────────────────────────────────────────────────
 
 function closeModal() {
-  // Save final position before closing
   if (ytPlayer && ytCurrentId) {
     try { saveProgress(ytCurrentId, ytPlayer.getCurrentTime(), ytPlayer.getDuration()); } catch {}
   }
+  if (cssFs) exitFs();
   document.getElementById('modal').classList.remove('open');
   if (ytPollTimer) { clearInterval(ytPollTimer); ytPollTimer = null; }
   if (ytPlayer)    { try { ytPlayer.stopVideo(); } catch {} }
