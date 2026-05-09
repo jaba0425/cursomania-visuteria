@@ -440,13 +440,37 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* Fullscreen button */
+    .yt-fs-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      opacity: 0.9;
+      transition: opacity 0.15s;
+    }
+    .yt-fs-btn:hover { opacity: 1; }
+    .yt-fs-btn svg { width: 20px; height: 20px; }
+
     /* ── Responsive ── */
     @media (max-width: 600px) {
       .page-title { font-size: 28px; }
       .category-grid { grid-template-columns: repeat(2, 1fr); }
       .video-grid { grid-template-columns: 1fr; }
-      .modal-bg { padding: 16px; justify-content: flex-end; }
-      .modal-player { border-radius: 10px; }
+      .modal-bg {
+        padding: 8px;
+        justify-content: center;
+        background: rgba(0,0,0,0.95);
+      }
+      .modal-toolbar { margin-bottom: 8px; }
+      .modal-player {
+        border-radius: 8px;
+        width: 100%;
+        max-width: 100%;
+      }
       .search-wrap { max-width: none; }
       .breadcrumb { display: none; }
     }
@@ -484,6 +508,10 @@
         <div class="yt-progress-fill" id="yt-progress-fill"></div>
       </div>
       <span class="yt-time" id="yt-time">0:00 / 0:00</span>
+      <button class="yt-fs-btn" id="yt-fs-btn" title="Pantalla completa">
+        <svg id="yt-fs-icon" viewBox="0 0 24 24" fill="white"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+        <svg id="yt-fs-exit-icon" viewBox="0 0 24 24" fill="white" style="display:none"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>
+      </button>
     </div>
   </div>
 </div>
@@ -833,6 +861,29 @@ document.getElementById('yt-progress-wrap').addEventListener('click', e => {
   const rect = e.currentTarget.getBoundingClientRect();
   ytPlayer.seekTo(((e.clientX - rect.left) / rect.width) * ytPlayer.getDuration(), true);
 });
+
+// Pantalla completa
+const fsBtn      = document.getElementById('yt-fs-btn');
+const fsIcon     = document.getElementById('yt-fs-icon');
+const fsExitIcon = document.getElementById('yt-fs-exit-icon');
+const fsPlayer   = document.getElementById('yt-modal');
+
+function updateFsIcon() {
+  const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+  fsIcon.style.display     = isFs ? 'none'  : 'block';
+  fsExitIcon.style.display = isFs ? 'block' : 'none';
+}
+
+fsBtn.addEventListener('click', () => {
+  if (document.fullscreenElement || document.webkitFullscreenElement) {
+    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+  } else {
+    (fsPlayer.requestFullscreen || fsPlayer.webkitRequestFullscreen).call(fsPlayer);
+  }
+});
+
+document.addEventListener('fullscreenchange', updateFsIcon);
+document.addEventListener('webkitfullscreenchange', updateFsIcon);
 
 // ── Cerrar modal ──────────────────────────────────────────────────────────────
 
