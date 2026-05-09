@@ -261,6 +261,24 @@
     /* ── YouTube custom controls ── */
     #yt-frame { width: 100%; height: 100%; }
     #yt-frame iframe { width: 100% !important; height: 100% !important; border: none; }
+
+    /* Bloquea clics en elementos de YouTube (título, logo) sin interferir con nuestros controles */
+    .yt-click-blocker {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      background: transparent;
+      /* Cubre la zona del título de YouTube con una barra negra */
+    }
+    .yt-click-blocker::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 48px;
+      background: #000;
+      border-radius: 14px 14px 0 0;
+    }
+
     .yt-controls {
       position: absolute;
       bottom: 0; left: 0; right: 0;
@@ -362,6 +380,7 @@
   </div>
   <div class="modal-player" id="yt-modal">
     <div id="yt-frame"></div>
+    <div class="yt-click-blocker"></div>
     <div class="yt-controls">
       <button class="yt-play-btn" id="yt-play-btn" title="Play / Pause">
         <svg id="yt-play-icon" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
