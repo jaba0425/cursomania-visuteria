@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cursomania – Videos de cursos de bisutería organizados por categoría.">
   <title>Cursomania – Bisutería</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📿</text></svg>">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -37,6 +39,7 @@
       font-size: 18px;
       font-weight: 700;
       letter-spacing: -0.3px;
+      cursor: pointer;
     }
     .breadcrumb {
       display: flex;
@@ -62,7 +65,6 @@
       margin: 0 auto;
       padding: 48px 24px 80px;
     }
-
     .page-title {
       font-size: 40px;
       font-weight: 700;
@@ -93,6 +95,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      user-select: none;
     }
     .cat-card:hover {
       transform: translateY(-3px);
@@ -133,6 +136,7 @@
       border: 1px solid rgba(0,0,0,0.05);
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       transition: transform 0.18s ease, box-shadow 0.18s ease;
+      user-select: none;
     }
     .vid-card:hover {
       transform: translateY(-3px);
@@ -194,13 +198,14 @@
       position: fixed;
       inset: 0;
       z-index: 1000;
-      background: rgba(0,0,0,0.75);
+      background: rgba(0,0,0,0.8);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 56px 24px 24px;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s ease;
@@ -209,29 +214,40 @@
       opacity: 1;
       pointer-events: all;
     }
-    .modal-wrap {
-      position: relative;
+    .modal-toolbar {
       width: 100%;
       max-width: 960px;
-    }
-    .modal-close {
-      position: absolute;
-      top: -44px;
-      right: 0;
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.85);
-      font-family: inherit;
-      font-size: 14px;
-      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 5px;
-      transition: color 0.15s;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      flex-shrink: 0;
     }
-    .modal-close:hover { color: #fff; }
+    .modal-title {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: calc(100% - 100px);
+    }
+    .modal-close {
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: #fff;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 6px 14px;
+      border-radius: 20px;
+      transition: background 0.15s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.25); }
     .modal-player {
       width: 100%;
+      max-width: 960px;
       aspect-ratio: 16/9;
       background: #000;
       border-radius: 14px;
@@ -247,7 +263,7 @@
       display: block;
     }
 
-    /* ── Loading / empty ── */
+    /* ── Loading / states ── */
     .state-block {
       display: flex;
       flex-direction: column;
@@ -257,6 +273,7 @@
       gap: 16px;
       color: #6e6e73;
       font-size: 16px;
+      text-align: center;
     }
     .spinner {
       width: 30px;
@@ -273,6 +290,8 @@
       .page-title { font-size: 28px; }
       .category-grid { grid-template-columns: repeat(2, 1fr); }
       .video-grid { grid-template-columns: 1fr; }
+      .modal-bg { padding: 16px; justify-content: flex-end; }
+      .modal-player { border-radius: 10px; }
     }
   </style>
 </head>
@@ -280,7 +299,7 @@
 
 <header>
   <div class="header-inner">
-    <span class="logo">Cursomania</span>
+    <span class="logo" id="logo">Cursomania</span>
     <div class="breadcrumb" id="breadcrumb"></div>
   </div>
 </header>
@@ -288,141 +307,203 @@
 <main id="main"></main>
 
 <div class="modal-bg" id="modal">
-  <div class="modal-wrap">
-    <button class="modal-close" onclick="closeModal()">✕&nbsp; Cerrar</button>
-    <div class="modal-player">
-      <iframe id="modal-iframe"
-        allow="autoplay; encrypted-media"
-        allowfullscreen
-        sandbox="allow-scripts allow-same-origin allow-presentation">
-      </iframe>
-    </div>
+  <div class="modal-toolbar">
+    <span class="modal-title" id="modal-title"></span>
+    <button class="modal-close" id="modal-close-btn">✕ Cerrar</button>
+  </div>
+  <div class="modal-player">
+    <iframe id="modal-iframe"
+      allow="autoplay; fullscreen; encrypted-media"
+      allowfullscreen>
+    </iframe>
   </div>
 </div>
 
 <script>
-const API_KEY       = 'AIzaSyDQr4efF4RuysRJPZPb_A1MF-CFHNIkaTw';
-const ROOT_ID       = '12Y0aAfWoEiRxpdeSXryG9eJp9t7cCUlt';
-const DRIVE_FILES   = 'https://www.googleapis.com/drive/v3/files';
+const API_KEY     = 'AIzaSyDQr4efF4RuysRJPZPb_A1MF-CFHNIkaTw';
+const ROOT_ID     = '12Y0aAfWoEiRxpdeSXryG9eJp9t7cCUlt';
+const DRIVE_FILES = 'https://www.googleapis.com/drive/v3/files';
 
 const ICONS = {
-  'Collares': '📿', 'Pulseras': '✨', 'Llaveros': '🔑',
-  'Religiosos': '🕊️', 'Porcelana': '🫙', 'Macramé': '🧶',
-  'Aretes': '💎', 'Tobilleras': '🌸', 'De todo': '🎨',
-  'Anillos': '💍', 'Navidad': '🎄', 'Atrapasueños': '🌙',
-  'Porcelana fría': '🌺', 'Cartucheras': '🎒', 'Trucos': '💡'
+  'Collares':       '📿',
+  'Pulseras':       '✨',
+  'Llaveros':       '🔑',
+  'Religiosos':     '🕊️',
+  'Porcelana':      '🫙',
+  'Macramé':        '🧶',
+  'Aretes':         '💎',
+  'Tobilleras':     '🌸',
+  'De todo':        '🎨',
+  'Anillos':        '💍',
+  'Navidad':        '🎄',
+  'Atrapasueños':   '🌙',
+  'Porcelana fría': '🌺',
+  'Cartucheras':    '🎒',
+  'Trucos':         '💡',
 };
 
-// ── API helper ──────────────────────────────────────────────────────────────
+// ── API ─────────────────────────────────────────────────────────────────────
 
-async function driveList(q, fields, extra = {}) {
-  const url = new URL(DRIVE_FILES);
-  const params = { q, fields, key: API_KEY, pageSize: 200, ...extra };
-  Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Drive API ${res.status}`);
-  const json = await res.json();
-  return json.files || [];
+async function driveList(q, fields, orderBy = 'name') {
+  let files = [];
+  let pageToken = null;
+
+  do {
+    const url = new URL(DRIVE_FILES);
+    const params = { q, fields: `nextPageToken,${fields}`, key: API_KEY, pageSize: 1000, orderBy };
+    if (pageToken) params.pageToken = pageToken;
+    Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
+
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Drive API ${res.status}`);
+    const json = await res.json();
+
+    files = files.concat(json.files || []);
+    pageToken = json.nextPageToken || null;
+  } while (pageToken);
+
+  return files;
 }
 
-// ── Views ───────────────────────────────────────────────────────────────────
+// ── Render helpers ───────────────────────────────────────────────────────────
+
+function setMain(html) {
+  document.getElementById('main').innerHTML = html;
+}
 
 function showLoading(msg) {
-  document.getElementById('main').innerHTML =
-    `<div class="state-block"><div class="spinner"></div><span>${msg}</span></div>`;
+  setMain(`<div class="state-block"><div class="spinner"></div><span>${msg}</span></div>`);
 }
 
-function showError(msg) {
-  document.getElementById('main').innerHTML =
-    `<div class="state-block">⚠️ ${msg}</div>`;
+function setBreadcrumb(categoryName) {
+  document.getElementById('breadcrumb').innerHTML = categoryName
+    ? `<button id="bc-home">Inicio</button><span>›</span><span>${esc(categoryName)}</span>`
+    : '';
+  if (categoryName) {
+    document.getElementById('bc-home').addEventListener('click', showCategories);
+  }
 }
+
+// ── Views ────────────────────────────────────────────────────────────────────
 
 async function showCategories() {
   showLoading('Cargando categorías…');
   setBreadcrumb(null);
+  document.title = 'Cursomania – Bisutería';
 
   let folders;
   try {
     folders = await driveList(
       `'${ROOT_ID}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false`,
-      'files(id,name)',
-      { orderBy: 'name' }
+      'files(id,name)'
     );
   } catch (e) {
-    return showError(e.message);
-  }
-
-  if (!folders.length) {
-    document.getElementById('main').innerHTML =
-      `<div class="state-block">No se encontraron categorías.</div>`;
+    setMain(`<div class="state-block">⚠️ Error al conectar con Drive.<br><small>${esc(e.message)}</small></div>`);
     return;
   }
 
-  const cards = folders.map(f => {
-    const icon = ICONS[f.name] ?? '📁';
-    return `<div class="cat-card" onclick="showVideos('${f.id}','${escHtml(f.name)}')">
-      <span class="cat-icon">${icon}</span>
-      <span class="cat-name">${escHtml(f.name)}</span>
-      <span class="cat-arrow">Ver videos →</span>
-    </div>`;
-  }).join('');
+  if (!folders.length) {
+    setMain(`<div class="state-block">No se encontraron categorías.</div>`);
+    return;
+  }
 
-  document.getElementById('main').innerHTML = `
+  const grid = document.createElement('div');
+  grid.className = 'category-grid';
+
+  folders.forEach(f => {
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+    card.dataset.id   = f.id;
+    card.dataset.name = f.name;
+    card.innerHTML = `
+      <span class="cat-icon">${ICONS[f.name] ?? '📁'}</span>
+      <span class="cat-name">${esc(f.name)}</span>
+      <span class="cat-arrow">Ver videos →</span>
+    `;
+    grid.appendChild(card);
+  });
+
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.cat-card');
+    if (card) showVideos(card.dataset.id, card.dataset.name);
+  });
+
+  const container = document.getElementById('main');
+  container.innerHTML = `
     <h1 class="page-title">Cursomania</h1>
     <p class="page-subtitle">Selecciona una categoría</p>
-    <div class="category-grid">${cards}</div>
   `;
+  container.appendChild(grid);
 }
 
 async function showVideos(folderId, folderName) {
   showLoading('Cargando videos…');
-  setBreadcrumb(folderName, folderId);
+  setBreadcrumb(folderName);
+  document.title = `${folderName} – Cursomania`;
 
   let videos;
   try {
     videos = await driveList(
       `'${folderId}' in parents and mimeType contains 'video/' and trashed=false`,
-      'files(id,name,thumbnailLink)',
-      { orderBy: 'name' }
+      'files(id,name,thumbnailLink)'
     );
   } catch (e) {
-    return showError(e.message);
+    setMain(`<div class="state-block">⚠️ Error al cargar videos.<br><small>${esc(e.message)}</small></div>`);
+    return;
   }
 
-  let videosHtml = '';
-  if (videos.length) {
-    videosHtml = `<div class="video-grid">
-      ${videos.map(v => {
-        const thumb = v.thumbnailLink
-          ? `<img src="${v.thumbnailLink}" alt="" loading="lazy" onerror="this.remove()">`
-          : '🎬';
-        const displayName = v.name.replace(/\.[^.]+$/, '');
-        return `<div class="vid-card" onclick="openVideo('${v.id}','${escHtml(v.name)}')">
-          <div class="vid-thumb">
-            ${thumb}
-            <div class="play-overlay">
-              <div class="play-circle">
-                <svg viewBox="0 0 24 24" fill="#1d1d1f"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-            </div>
-          </div>
-          <div class="vid-info">
-            <p class="vid-name">${escHtml(displayName)}</p>
-          </div>
-        </div>`;
-      }).join('')}
-    </div>`;
-  } else {
-    videosHtml = `<div class="state-block">No hay videos en esta categoría.</div>`;
-  }
+  const container = document.getElementById('main');
+  const count     = videos.length;
 
-  const count = videos.length;
-  document.getElementById('main').innerHTML = `
-    <button class="back-btn" onclick="showCategories()">← Categorías</button>
-    <h1 class="page-title">${escHtml(folderName)}</h1>
+  const backBtn = document.createElement('button');
+  backBtn.className = 'back-btn';
+  backBtn.textContent = '← Categorías';
+  backBtn.addEventListener('click', showCategories);
+
+  container.innerHTML = '';
+  container.appendChild(backBtn);
+  container.insertAdjacentHTML('beforeend', `
+    <h1 class="page-title">${esc(folderName)}</h1>
     <p class="page-subtitle">${count} ${count === 1 ? 'video' : 'videos'}</p>
-    ${videosHtml}
-  `;
+  `);
+
+  if (!count) {
+    container.insertAdjacentHTML('beforeend',
+      `<div class="state-block">No hay videos en esta categoría.</div>`);
+    return;
+  }
+
+  const grid = document.createElement('div');
+  grid.className = 'video-grid';
+
+  videos.forEach(v => {
+    const displayName = v.name.replace(/\.[^.]+$/, '');
+    const card = document.createElement('div');
+    card.className = 'vid-card';
+    card.dataset.id   = v.id;
+    card.dataset.name = displayName;
+    card.innerHTML = `
+      <div class="vid-thumb">
+        ${v.thumbnailLink ? `<img src="${esc(v.thumbnailLink)}" alt="" loading="lazy" onerror="this.remove()">` : '🎬'}
+        <div class="play-overlay">
+          <div class="play-circle">
+            <svg viewBox="0 0 24 24" fill="#1d1d1f"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="vid-info">
+        <p class="vid-name">${esc(displayName)}</p>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.vid-card');
+    if (card) openVideo(card.dataset.id, card.dataset.name);
+  });
+
+  container.appendChild(grid);
 }
 
 // ── Modal ────────────────────────────────────────────────────────────────────
@@ -430,9 +511,9 @@ async function showVideos(folderId, folderName) {
 function openVideo(fileId, name) {
   const modal  = document.getElementById('modal');
   const iframe = document.getElementById('modal-iframe');
+  document.getElementById('modal-title').textContent = name;
   iframe.src = `https://drive.google.com/file/d/${fileId}/preview?rm=minimal`;
   modal.classList.add('open');
-  document.title = name.replace(/\.[^.]+$/, '') + ' – Cursomania';
 }
 
 function closeModal() {
@@ -440,33 +521,32 @@ function closeModal() {
   const iframe = document.getElementById('modal-iframe');
   modal.classList.remove('open');
   setTimeout(() => { iframe.src = ''; }, 280);
-  document.title = 'Cursomania – Bisutería';
 }
+
+document.getElementById('modal-close-btn').addEventListener('click', closeModal);
 
 document.getElementById('modal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeModal();
 });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// ── Breadcrumb ───────────────────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
 
-function setBreadcrumb(categoryName) {
-  const el = document.getElementById('breadcrumb');
-  el.innerHTML = categoryName
-    ? `<button onclick="showCategories()">Inicio</button>
-       <span>›</span>
-       <span>${escHtml(categoryName)}</span>`
-    : '';
-}
+// ── Utils ─────────────────────────────────────────────────────────────────────
 
-// ── Util ─────────────────────────────────────────────────────────────────────
-
-function escHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+function esc(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 // ── Boot ─────────────────────────────────────────────────────────────────────
 
+document.getElementById('logo').addEventListener('click', showCategories);
 showCategories();
 </script>
 </body>
