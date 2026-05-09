@@ -862,28 +862,59 @@ document.getElementById('yt-progress-wrap').addEventListener('click', e => {
   ytPlayer.seekTo(((e.clientX - rect.left) / rect.width) * ytPlayer.getDuration(), true);
 });
 
-// Pantalla completa
+// Pantalla completa (nativa + fallback CSS para iOS)
 const fsBtn      = document.getElementById('yt-fs-btn');
 const fsIcon     = document.getElementById('yt-fs-icon');
 const fsExitIcon = document.getElementById('yt-fs-exit-icon');
 const fsPlayer   = document.getElementById('yt-modal');
+let   cssFs      = false;
 
-function updateFsIcon() {
-  const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
-  fsIcon.style.display     = isFs ? 'none'  : 'block';
-  fsExitIcon.style.display = isFs ? 'block' : 'none';
+function setFsIcon(on) {
+  fsIcon.style.display     = on ? 'none'  : 'block';
+  fsExitIcon.style.display = on ? 'block' : 'none';
+}
+
+function enterCssFs() {
+  cssFs = true;
+  fsPlayer.style.cssText = `
+    position:fixed;inset:0;width:100vw!important;height:100vh!important;
+    max-width:none;border-radius:0;z-index:2000;aspect-ratio:unset;
+  `;
+  document.getElementById('modal').style.zIndex = '1999';
+  setFsIcon(true);
+}
+
+function exitCssFs() {
+  cssFs = false;
+  fsPlayer.style.cssText = '';
+  document.getElementById('modal').style.zIndex = '';
+  setFsIcon(false);
 }
 
 fsBtn.addEventListener('click', () => {
+  // Salir de pantalla completa
   if (document.fullscreenElement || document.webkitFullscreenElement) {
     (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    return;
+  }
+  if (cssFs) { exitCssFs(); return; }
+
+  // Intentar API nativa
+  const req = fsPlayer.requestFullscreen || fsPlayer.webkitRequestFullscreen;
+  if (req) {
+    req.call(fsPlayer).catch(() => enterCssFs());
   } else {
-    (fsPlayer.requestFullscreen || fsPlayer.webkitRequestFullscreen).call(fsPlayer);
+    // iOS Safari: fallback CSS
+    enterCssFs();
   }
 });
 
-document.addEventListener('fullscreenchange', updateFsIcon);
-document.addEventListener('webkitfullscreenchange', updateFsIcon);
+document.addEventListener('fullscreenchange', () => {
+  setFsIcon(!!(document.fullscreenElement));
+});
+document.addEventListener('webkitfullscreenchange', () => {
+  setFsIcon(!!(document.webkitFullscreenElement));
+});
 
 // ── Cerrar modal ──────────────────────────────────────────────────────────────
 
