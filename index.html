@@ -325,22 +325,36 @@ const ROOT_ID     = '12Y0aAfWoEiRxpdeSXryG9eJp9t7cCUlt';
 const DRIVE_FILES = 'https://www.googleapis.com/drive/v3/files';
 
 const ICONS = {
-  'Collares':       '📿',
-  'Pulseras':       '✨',
-  'Llaveros':       '🔑',
-  'Religiosos':     '🕊️',
-  'Porcelana':      '🫙',
-  'Macramé':        '🧶',
-  'Aretes':         '💎',
-  'Tobilleras':     '🌸',
-  'De todo':        '🎨',
-  'Anillos':        '💍',
-  'Navidad':        '🎄',
-  'Atrapasueños':   '🌙',
-  'Porcelana fría': '🌺',
-  'Cartucheras':    '🎒',
-  'Trucos':         '💡',
+  'COLLARES':       '📿',
+  'PULSERAS':       '✨',
+  'LLAVEROS':       '🔑',
+  'RELIGIOSOS':     '🕊️',
+  'PORCELANA':      '🫙',
+  'MACRAME':        '🧶',
+  'MACRАМÉ':        '🧶',
+  'ARETES':         '💎',
+  'TOBILLERAS':     '🌸',
+  'DE TODO':        '🎨',
+  'ANILLOS':        '💍',
+  'NAVIDAD':        '🎄',
+  'ATRAPASUENOS':   '🌙',
+  'ATRAPASUEÑOS':   '🌙',
+  'PORCELANA FRIA': '🌺',
+  'PORCELANA FRÍA': '🌺',
+  'CARTUCHERAS':    '🎒',
+  'TRUCOS':         '💡',
 };
+
+// Strips "1. " prefix and returns uppercase key for icon lookup
+function folderKey(name) {
+  return name.replace(/^\d+\.\s*/, '').toUpperCase().trim();
+}
+
+// Converts "1. COLLARES" → "Collares" for display
+function folderDisplay(name) {
+  const clean = name.replace(/^\d+\.\s*/, '').trim();
+  return clean.charAt(0).toUpperCase() + clean.slice(1).toLowerCase();
+}
 
 // ── API ─────────────────────────────────────────────────────────────────────
 
@@ -415,9 +429,10 @@ async function showCategories() {
     card.className = 'cat-card';
     card.dataset.id   = f.id;
     card.dataset.name = f.name;
+    const display = folderDisplay(f.name);
     card.innerHTML = `
-      <span class="cat-icon">${ICONS[f.name] ?? '📁'}</span>
-      <span class="cat-name">${esc(f.name)}</span>
+      <span class="cat-icon">${ICONS[folderKey(f.name)] ?? '📁'}</span>
+      <span class="cat-name">${esc(display)}</span>
       <span class="cat-arrow">Ver videos →</span>
     `;
     grid.appendChild(card);
@@ -438,8 +453,9 @@ async function showCategories() {
 
 async function showVideos(folderId, folderName) {
   showLoading('Cargando videos…');
-  setBreadcrumb(folderName);
-  document.title = `${folderName} – Cursomania`;
+  const displayName = folderDisplay(folderName);
+  setBreadcrumb(displayName);
+  document.title = `${displayName} – Cursomania`;
 
   let videos;
   try {
@@ -463,7 +479,7 @@ async function showVideos(folderId, folderName) {
   container.innerHTML = '';
   container.appendChild(backBtn);
   container.insertAdjacentHTML('beforeend', `
-    <h1 class="page-title">${esc(folderName)}</h1>
+    <h1 class="page-title">${esc(displayName)}</h1>
     <p class="page-subtitle">${count} ${count === 1 ? 'video' : 'videos'}</p>
   `);
 
