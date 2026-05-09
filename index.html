@@ -358,25 +358,37 @@ function folderDisplay(name) {
 
 // ── API ─────────────────────────────────────────────────────────────────────
 
-async function driveList(q, fields, orderBy = 'name') {
+async function driveList(q, fields) {
   let files = [];
   let pageToken = null;
 
   do {
     const url = new URL(DRIVE_FILES);
-    const params = { q, fields: `nextPageToken,${fields}`, key: API_KEY, pageSize: 1000, orderBy };
+    const params = { q, fields: `nextPageToken,${fields}`, key: API_KEY, pageSize: 1000 };
     if (pageToken) params.pageToken = pageToken;
     Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
 
     const res = await fetch(url);
-    if (!res.ok) throw new Error(`Drive API ${res.status}`);
     const json = await res.json();
+    if (!res.ok || json.error) throw new Error(json.error?.message ?? `Drive API ${res.status}`);
 
     files = files.concat(json.files || []);
     pageToken = json.nextPageToken || null;
   } while (pageToken);
 
   return files;
+}
+
+async function countVideos(folderId) {
+  try {
+    const files = await driveList(
+      `'${folderId}' in parents and not mimeType='application/vnd.google-apps.folder' and trashed=false`,
+      'files(id)'
+    );
+    return files.length;
+  } catch {
+    return 0;
+  }
 }
 
 // ── Render helpers ───────────────────────────────────────────────────────────
@@ -421,10 +433,16 @@ async function showCategories() {
     return;
   }
 
+  // Contar videos en paralelo y ordenar de mayor a menor
+  const counts = await Promise.all(folders.map(f => countVideos(f.id)));
+  const sorted = folders
+    .map((f, i) => ({ ...f, count: counts[i] }))
+    .sort((a, b) => b.count - a.count);
+
   const grid = document.createElement('div');
   grid.className = 'category-grid';
 
-  folders.forEach(f => {
+  sorted.forEach(f => {
     const card = document.createElement('div');
     card.className = 'cat-card';
     card.dataset.id   = f.id;
@@ -433,7 +451,7 @@ async function showCategories() {
     card.innerHTML = `
       <span class="cat-icon">${ICONS[folderKey(f.name)] ?? '📁'}</span>
       <span class="cat-name">${esc(display)}</span>
-      <span class="cat-arrow">Ver videos →</span>
+      <span class="cat-arrow">${f.count} video${f.count !== 1 ? 's' : ''}</span>
     `;
     grid.appendChild(card);
   });
@@ -460,11 +478,19 @@ async function showVideos(folderId, folderName) {
   let videos;
   try {
     videos = await driveList(
-      `'${folderId}' in parents and mimeType contains 'video/' and trashed=false`,
+      `'${folderId}' in parents and not mimeType='application/vnd.google-apps.folder' and trashed=false`,
       'files(id,name,thumbnailLink)'
     );
   } catch (e) {
-    setMain(`<div class="state-block">⚠️ Error al cargar videos.<br><small>${esc(e.message)}</small></div>`);
+    const container = document.getElementById('main');
+    container.innerHTML = '';
+    const backBtn = document.createElement('button');
+    backBtn.className = 'back-btn';
+    backBtn.textContent = '← Categorías';
+    backBtn.addEventListener('click', showCategories);
+    container.appendChild(backBtn);
+    container.insertAdjacentHTML('beforeend',
+      `<div class="state-block">⚠️ Error al cargar videos.<br><small>${esc(e.message)}</small></div>`);
     return;
   }
 
@@ -493,11 +519,11 @@ async function showVideos(folderId, folderName) {
   grid.className = 'video-grid';
 
   videos.forEach(v => {
-    const displayName = v.name.replace(/\.[^.]+$/, '');
+    const vidName = v.name.replace(/\.[^.]+$/, '');
     const card = document.createElement('div');
     card.className = 'vid-card';
     card.dataset.id   = v.id;
-    card.dataset.name = displayName;
+    card.dataset.name = vidName;
     card.innerHTML = `
       <div class="vid-thumb">
         ${v.thumbnailLink ? `<img src="${esc(v.thumbnailLink)}" alt="" loading="lazy" onerror="this.remove()">` : '🎬'}
@@ -508,7 +534,7 @@ async function showVideos(folderId, folderName) {
         </div>
       </div>
       <div class="vid-info">
-        <p class="vid-name">${esc(displayName)}</p>
+        <p class="vid-name">${esc(vidName)}</p>
       </div>
     `;
     grid.appendChild(card);
