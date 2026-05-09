@@ -33,20 +33,51 @@
       height: 68px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 16px;
     }
-    .logo {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      cursor: pointer;
+    #logo { cursor: pointer; display: block; flex-shrink: 0; }
+
+    /* ── Search bar ── */
+    .search-wrap {
+      flex: 1;
+      max-width: 420px;
+      position: relative;
     }
+    .search-wrap svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px; height: 16px;
+      color: #6e6e73;
+      pointer-events: none;
+    }
+    #search-input {
+      width: 100%;
+      padding: 9px 12px 9px 36px;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 10px;
+      background: rgba(0,0,0,0.05);
+      font-family: inherit;
+      font-size: 14px;
+      color: #1d1d1f;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    #search-input:focus {
+      border-color: #0066cc;
+      background: #fff;
+    }
+    #search-input::placeholder { color: #8e8e93; }
+
     .breadcrumb {
       display: flex;
       align-items: center;
       gap: 6px;
       font-size: 14px;
       color: #6e6e73;
+      flex-shrink: 0;
+      margin-left: auto;
     }
     .breadcrumb button {
       background: none;
@@ -104,7 +135,14 @@
     .cat-card:active { transform: scale(0.97); }
     .cat-icon { font-size: 38px; line-height: 1; }
     .cat-name { font-size: 16px; font-weight: 600; letter-spacing: -0.2px; }
-    .cat-arrow { font-size: 13px; color: #6e6e73; }
+    .cat-count { font-size: 13px; color: #6e6e73; }
+
+    /* Favoritos card accent */
+    .cat-card.fav-cat {
+      background: linear-gradient(135deg, #fff0f3, #fff);
+      border-color: rgba(255,59,89,0.15);
+    }
+    .cat-card.fav-cat .cat-name { color: #c41230; }
 
     /* ── Back button ── */
     .back-btn {
@@ -137,6 +175,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       transition: transform 0.18s ease, box-shadow 0.18s ease;
       user-select: none;
+      position: relative;
     }
     .vid-card:hover {
       transform: translateY(-3px);
@@ -181,7 +220,38 @@
       justify-content: center;
     }
     .play-circle svg { width: 22px; height: 22px; margin-left: 3px; }
-    .vid-info { padding: 14px 16px; }
+
+    /* Progress bar on thumbnail */
+    .vid-watched-bar {
+      position: absolute;
+      bottom: 0; left: 0;
+      height: 3px;
+      background: #ff3b5a;
+      border-radius: 0 2px 0 0;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Favorite button */
+    .fav-btn {
+      position: absolute;
+      top: 8px; right: 8px;
+      z-index: 3;
+      background: rgba(0,0,0,0.45);
+      border: none;
+      border-radius: 50%;
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+      transition: background 0.15s, transform 0.15s;
+      backdrop-filter: blur(4px);
+    }
+    .fav-btn:hover { background: rgba(0,0,0,0.65); transform: scale(1.12); }
+    .fav-btn.active { background: rgba(255,59,89,0.85); }
+
+    .vid-info { padding: 12px 16px 14px; }
     .vid-name {
       font-size: 14px;
       font-weight: 500;
@@ -191,6 +261,22 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
       line-height: 1.4;
+    }
+    .vid-resume {
+      margin-top: 5px;
+      font-size: 12px;
+      color: #ff3b5a;
+      font-weight: 500;
+    }
+    .vid-cat-badge {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 2px 8px;
+      background: #f0f0f5;
+      border-radius: 6px;
+      font-size: 11px;
+      color: #6e6e73;
+      font-weight: 500;
     }
 
     /* ── Modal ── */
@@ -210,10 +296,7 @@
       pointer-events: none;
       transition: opacity 0.25s ease;
     }
-    .modal-bg.open {
-      opacity: 1;
-      pointer-events: all;
-    }
+    .modal-bg.open { opacity: 1; pointer-events: all; }
     .modal-toolbar {
       width: 100%;
       max-width: 960px;
@@ -262,7 +345,6 @@
     #yt-frame { width: 100%; height: 100%; }
     #yt-frame iframe { width: 100% !important; height: 100% !important; border: none; }
 
-    /* Bloquea clics en elementos de YouTube sin interferir con nuestros controles */
     .yt-click-blocker {
       position: absolute;
       inset: 0;
@@ -270,7 +352,6 @@
       background: transparent;
       transition: background 0.15s;
     }
-    /* Barra negra superior: cubre el título y canal de YouTube */
     .yt-click-blocker::before {
       content: '';
       position: absolute;
@@ -279,7 +360,6 @@
       background: #000;
       border-radius: 14px 14px 0 0;
     }
-    /* Barra negra inferior: cubre "Más videos", logo YouTube y controles nativos */
     .yt-click-blocker::after {
       content: '';
       position: absolute;
@@ -339,7 +419,7 @@
       white-space: nowrap;
     }
 
-    /* ── Loading / states ── */
+    /* ── States ── */
     .state-block {
       display: flex;
       flex-direction: column;
@@ -352,8 +432,7 @@
       text-align: center;
     }
     .spinner {
-      width: 30px;
-      height: 30px;
+      width: 30px; height: 30px;
       border: 2px solid #d2d2d7;
       border-top-color: #1d1d1f;
       border-radius: 50%;
@@ -368,6 +447,8 @@
       .video-grid { grid-template-columns: 1fr; }
       .modal-bg { padding: 16px; justify-content: flex-end; }
       .modal-player { border-radius: 10px; }
+      .search-wrap { max-width: none; }
+      .breadcrumb { display: none; }
     }
   </style>
 </head>
@@ -375,14 +456,17 @@
 
 <header>
   <div class="header-inner">
-    <img src="logo.png" alt="CursoManía" id="logo" height="52" style="cursor:pointer;display:block;">
+    <img src="logo.png" alt="CursoManía" id="logo" height="52">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" id="search-input" placeholder="Buscar videos…" autocomplete="off">
+    </div>
     <div class="breadcrumb" id="breadcrumb"></div>
   </div>
 </header>
 
 <main id="main"></main>
 
-<!-- YouTube player con controles propios -->
 <div class="modal-bg" id="modal">
   <div class="modal-toolbar">
     <span class="modal-title" id="modal-title"></span>
@@ -406,40 +490,103 @@
 
 <script>
 const ICONS = {
-  'Pulseras':              '✨',
-  'Macramé':               '🧶',
-  'Collares':              '📿',
-  'Manualidades':          '🎨',
+  'Mis Favoritos':           '❤️',
+  'Pulseras':                '✨',
+  'Macramé':                 '🧶',
+  'Collares':                '📿',
+  'Manualidades':            '🎨',
   'Llaveros y Phone Charms': '🔑',
-  'Atrapasueños':          '🌙',
-  'Porcelana fría':        '🌺',
-  'Unboxings':             '📦',
-  'Navidad':               '🎄',
-  'Aretes':                '💎',
-  'Anillos':               '💍',
-  'Religiosos':            '🕊️',
-  'Tobilleras':            '🌸',
-  'De todo':               '🎁',
+  'Atrapasueños':            '🌙',
+  'Porcelana fría':          '🌺',
+  'Unboxings':               '📦',
+  'Navidad':                 '🎄',
+  'Aretes':                  '💎',
+  'Anillos':                 '💍',
+  'Religiosos':              '🕊️',
+  'Tobilleras':              '🌸',
+  'De todo':                 '🎁',
 };
 
-let catalogData = null; // [{category, videos:[{id,title}]}]
+let catalogData = null;
+let videoIndex  = []; // {id, title, category, catIdx}
 
-// ── Render helpers ───────────────────────────────────────────────────────────
+// ── Storage ──────────────────────────────────────────────────────────────────
 
-function setMain(html) {
-  document.getElementById('main').innerHTML = html;
+function getProgress(id) {
+  try { return JSON.parse(localStorage.getItem('cm_p_' + id)) || null; } catch { return null; }
+}
+function saveProgress(id, cur, dur) {
+  if (dur > 0) localStorage.setItem('cm_p_' + id, JSON.stringify({ cur, dur }));
+}
+function getFavs() {
+  try { return new Set(JSON.parse(localStorage.getItem('cm_favs')) || []); } catch { return new Set(); }
+}
+function toggleFav(id) {
+  const f = getFavs();
+  f.has(id) ? f.delete(id) : f.add(id);
+  localStorage.setItem('cm_favs', JSON.stringify([...f]));
+  return f.has(id);
 }
 
-function setBreadcrumb(categoryName) {
-  document.getElementById('breadcrumb').innerHTML = categoryName
-    ? `<button id="bc-home">Inicio</button><span>›</span><span>${esc(categoryName)}</span>`
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+                  .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function fmtTime(s) {
+  s = Math.floor(s || 0);
+  return Math.floor(s/60) + ':' + String(s%60).padStart(2,'0');
+}
+function setMain(html) { document.getElementById('main').innerHTML = html; }
+
+function setBreadcrumb(label) {
+  const bc = document.getElementById('breadcrumb');
+  bc.innerHTML = label
+    ? `<button id="bc-home">Inicio</button><span>›</span><span>${esc(label)}</span>`
     : '';
-  if (categoryName) {
-    document.getElementById('bc-home').addEventListener('click', showCategories);
-  }
+  if (label) document.getElementById('bc-home').addEventListener('click', () => {
+    document.getElementById('search-input').value = '';
+    showCategories();
+  });
 }
 
-// ── Views ────────────────────────────────────────────────────────────────────
+// ── Card builder ──────────────────────────────────────────────────────────────
+
+function makeVideoCard(v, { showBadge = false } = {}) {
+  const card = document.createElement('div');
+  card.className    = 'vid-card';
+  card.dataset.id   = v.id;
+  card.dataset.name = v.title;
+
+  const prog   = getProgress(v.id);
+  const pct    = prog?.dur > 0 ? Math.min((prog.cur / prog.dur) * 100, 100) : 0;
+  const resume = prog?.cur > 15 ? `<p class="vid-resume">Continuar en ${fmtTime(prog.cur)}</p>` : '';
+  const bar    = pct > 1 ? `<div class="vid-watched-bar" style="width:${pct.toFixed(1)}%"></div>` : '';
+  const badge  = showBadge && v.category ? `<span class="vid-cat-badge">${esc(v.category)}</span>` : '';
+  const isFav  = getFavs().has(v.id);
+
+  card.innerHTML = `
+    <div class="vid-thumb">
+      <img src="https://img.youtube.com/vi/${esc(v.id)}/mqdefault.jpg" alt="" loading="lazy">
+      <div class="play-overlay">
+        <div class="play-circle">
+          <svg viewBox="0 0 24 24" fill="#1d1d1f"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      ${bar}
+    </div>
+    <button class="fav-btn${isFav ? ' active' : ''}" data-fav="${esc(v.id)}" title="${isFav ? 'Quitar de favoritos' : 'Agregar a favoritos'}">${isFav ? '❤️' : '🤍'}</button>
+    <div class="vid-info">
+      <p class="vid-name">${esc(v.title)}</p>
+      ${resume}
+      ${badge}
+    </div>
+  `;
+  return card;
+}
+
+// ── Views ─────────────────────────────────────────────────────────────────────
 
 async function showCategories() {
   setBreadcrumb(null);
@@ -451,6 +598,10 @@ async function showCategories() {
       const res = await fetch('videos.json');
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       catalogData = await res.json();
+      videoIndex  = [];
+      catalogData.forEach((cat, catIdx) =>
+        cat.videos.forEach(v => videoIndex.push({ ...v, category: cat.category, catIdx }))
+      );
     } catch (e) {
       setMain(`<div class="state-block">⚠️ Error al cargar el catálogo.<br><small>${esc(e.message)}</small></div>`);
       return;
@@ -460,90 +611,137 @@ async function showCategories() {
   const grid = document.createElement('div');
   grid.className = 'category-grid';
 
+  // Mis Favoritos (si hay)
+  const favIds = getFavs();
+  if (favIds.size > 0) {
+    const fc = document.createElement('div');
+    fc.className = 'cat-card fav-cat';
+    fc.dataset.special = 'favorites';
+    fc.innerHTML = `
+      <span class="cat-icon">❤️</span>
+      <span class="cat-name">Mis Favoritos</span>
+      <span class="cat-count">${favIds.size} video${favIds.size !== 1 ? 's' : ''}</span>
+    `;
+    grid.appendChild(fc);
+  }
+
   catalogData.forEach((cat, idx) => {
-    const count = cat.videos.length;
-    const card  = document.createElement('div');
+    const card = document.createElement('div');
     card.className      = 'cat-card';
     card.dataset.catIdx = idx;
     card.innerHTML = `
       <span class="cat-icon">${ICONS[cat.category] ?? '📁'}</span>
       <span class="cat-name">${esc(cat.category)}</span>
-      <span class="cat-arrow">${count} video${count !== 1 ? 's' : ''}</span>
+      <span class="cat-count">${cat.videos.length} videos</span>
     `;
     grid.appendChild(card);
   });
 
   grid.addEventListener('click', e => {
     const card = e.target.closest('.cat-card');
-    if (card) showVideos(Number(card.dataset.catIdx));
+    if (!card) return;
+    if (card.dataset.special === 'favorites') { showFavorites(); return; }
+    showVideos(Number(card.dataset.catIdx));
   });
 
   const container = document.getElementById('main');
-  container.innerHTML = `
-    <h1 class="page-title">Cursomania</h1>
-    <p class="page-subtitle">Selecciona una categoría</p>
-  `;
+  container.innerHTML = `<h1 class="page-title">Cursomania</h1><p class="page-subtitle">Selecciona una categoría</p>`;
   container.appendChild(grid);
 }
 
-function showVideos(catIdx) {
-  const cat     = catalogData[catIdx];
-  const videos  = cat.videos;
-  const catName = cat.category;
-
-  setBreadcrumb(catName);
-  document.title = `${catName} – Cursomania`;
-
+function renderVideoGrid(videos, { title, subtitle, backFn, showBadge = false }) {
   const container = document.getElementById('main');
-  const backBtn   = document.createElement('button');
-  backBtn.className = 'back-btn';
-  backBtn.textContent = '← Categorías';
-  backBtn.addEventListener('click', showCategories);
-
   container.innerHTML = '';
-  container.appendChild(backBtn);
+
+  if (backFn) {
+    const btn = document.createElement('button');
+    btn.className   = 'back-btn';
+    btn.textContent = '← Categorías';
+    btn.addEventListener('click', backFn);
+    container.appendChild(btn);
+  }
+
   container.insertAdjacentHTML('beforeend', `
-    <h1 class="page-title">${esc(catName)}</h1>
-    <p class="page-subtitle">${videos.length} ${videos.length === 1 ? 'video' : 'videos'}</p>
+    <h1 class="page-title">${esc(title)}</h1>
+    <p class="page-subtitle">${esc(subtitle)}</p>
   `);
+
+  if (!videos.length) {
+    container.insertAdjacentHTML('beforeend', '<div class="state-block">No hay videos aquí todavía.</div>');
+    return;
+  }
 
   const grid = document.createElement('div');
   grid.className = 'video-grid';
+  videos.forEach(v => grid.appendChild(makeVideoCard(v, { showBadge })));
 
-  videos.forEach(v => {
-    const card = document.createElement('div');
-    card.className    = 'vid-card';
-    card.dataset.id   = v.id;
-    card.dataset.name = v.title;
-    card.innerHTML = `
-      <div class="vid-thumb">
-        <img src="https://img.youtube.com/vi/${esc(v.id)}/mqdefault.jpg" alt="" loading="lazy">
-        <div class="play-overlay">
-          <div class="play-circle">
-            <svg viewBox="0 0 24 24" fill="#1d1d1f"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
-      </div>
-      <div class="vid-info">
-        <p class="vid-name">${esc(v.title)}</p>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-
+  // Play on card click
   grid.addEventListener('click', e => {
+    if (e.target.closest('.fav-btn')) return; // handled separately
     const card = e.target.closest('.vid-card');
     if (card) openYouTube(card.dataset.id, card.dataset.name);
   });
 
+  // Fav toggle
+  grid.addEventListener('click', e => {
+    const btn = e.target.closest('.fav-btn');
+    if (!btn) return;
+    e.stopPropagation();
+    const id    = btn.dataset.fav;
+    const isNow = toggleFav(id);
+    btn.classList.toggle('active', isNow);
+    btn.textContent = isNow ? '❤️' : '🤍';
+    btn.title       = isNow ? 'Quitar de favoritos' : 'Agregar a favoritos';
+  });
+
   container.appendChild(grid);
+}
+
+function showVideos(catIdx) {
+  const cat = catalogData[catIdx];
+  setBreadcrumb(cat.category);
+  document.title = `${cat.category} – Cursomania`;
+  renderVideoGrid(cat.videos, {
+    title:    cat.category,
+    subtitle: `${cat.videos.length} videos`,
+    backFn:   showCategories,
+  });
+}
+
+function showFavorites() {
+  setBreadcrumb('Mis Favoritos');
+  document.title = 'Mis Favoritos – Cursomania';
+  const favIds = getFavs();
+  const videos = videoIndex.filter(v => favIds.has(v.id));
+  renderVideoGrid(videos, {
+    title:     'Mis Favoritos',
+    subtitle:  `${videos.length} video${videos.length !== 1 ? 's' : ''}`,
+    backFn:    showCategories,
+    showBadge: true,
+  });
+}
+
+function showSearch(query) {
+  query = query.trim();
+  if (!query) { showCategories(); return; }
+  setBreadcrumb(`"${query}"`);
+  document.title = `${query} – Cursomania`;
+  const q       = query.toLowerCase();
+  const results = videoIndex.filter(v => v.title.toLowerCase().includes(q));
+  renderVideoGrid(results, {
+    title:     `Resultados: "${query}"`,
+    subtitle:  results.length ? `${results.length} videos encontrados` : 'Sin resultados',
+    showBadge: true,
+  });
 }
 
 // ── YouTube modal ─────────────────────────────────────────────────────────────
 
-let ytPlayer    = null;
-let ytPollTimer = null;
+let ytPlayer     = null;
+let ytPollTimer  = null;
 let ytFlashTimer = null;
+let ytSaveTimer  = 0;
+let ytCurrentId  = null;
 
 function ytFlash() {
   const b = document.querySelector('.yt-click-blocker');
@@ -560,11 +758,6 @@ const ytApiReady = new Promise(resolve => {
   document.head.appendChild(s);
 });
 
-function fmtTime(s) {
-  s = Math.floor(s || 0);
-  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '00')}`;
-}
-
 function setYTPlayIcon(playing) {
   document.getElementById('yt-play-icon').style.display  = playing ? 'none'  : 'block';
   document.getElementById('yt-pause-icon').style.display = playing ? 'block' : 'none';
@@ -575,28 +768,32 @@ function updateYTProgress() {
   try {
     const cur = ytPlayer.getCurrentTime();
     const dur = ytPlayer.getDuration();
-    document.getElementById('yt-progress-fill').style.width =
-      dur ? `${(cur / dur) * 100}%` : '0%';
-    document.getElementById('yt-time').textContent =
-      `${fmtTime(cur)} / ${fmtTime(dur)}`;
+    document.getElementById('yt-progress-fill').style.width = dur ? `${(cur/dur)*100}%` : '0%';
+    document.getElementById('yt-time').textContent = `${fmtTime(cur)} / ${fmtTime(dur)}`;
+    // Save every ~3s
+    ytSaveTimer++;
+    if (ytSaveTimer % 6 === 0 && ytCurrentId) saveProgress(ytCurrentId, cur, dur);
   } catch {}
 }
 
 async function openYouTube(videoId, name) {
   await ytApiReady;
 
+  ytCurrentId = videoId;
   document.getElementById('modal-title').textContent = name;
   document.getElementById('modal').classList.add('open');
-
   document.getElementById('yt-progress-fill').style.width = '0%';
   document.getElementById('yt-time').textContent = '0:00 / 0:00';
   setYTPlayIcon(false);
+  ytSaveTimer = 0;
 
   if (ytPollTimer) { clearInterval(ytPollTimer); ytPollTimer = null; }
   if (ytPlayer)    { try { ytPlayer.destroy(); } catch {} ytPlayer = null; }
 
   const frame = document.getElementById('yt-frame');
   frame.innerHTML = '<div id="yt-inner" style="width:100%;height:100%"></div>';
+
+  const saved = getProgress(videoId);
 
   ytPlayer = new YT.Player('yt-inner', {
     videoId,
@@ -606,7 +803,8 @@ async function openYouTube(videoId, name) {
       autoplay: 1, controls: 0, rel: 0,
       modestbranding: 1, iv_load_policy: 3,
       disablekb: 0, fs: 1, playsinline: 1,
-      origin: location.origin
+      origin: location.origin,
+      start: saved?.cur > 15 ? Math.floor(saved.cur) : 0,
     },
     events: {
       onReady(e) {
@@ -636,9 +834,13 @@ document.getElementById('yt-progress-wrap').addEventListener('click', e => {
   ytPlayer.seekTo(((e.clientX - rect.left) / rect.width) * ytPlayer.getDuration(), true);
 });
 
-// ── Cerrar modal ─────────────────────────────────────────────────────────────
+// ── Cerrar modal ──────────────────────────────────────────────────────────────
 
 function closeModal() {
+  // Save final position before closing
+  if (ytPlayer && ytCurrentId) {
+    try { saveProgress(ytCurrentId, ytPlayer.getCurrentTime(), ytPlayer.getDuration()); } catch {}
+  }
   document.getElementById('modal').classList.remove('open');
   if (ytPollTimer) { clearInterval(ytPollTimer); ytPollTimer = null; }
   if (ytPlayer)    { try { ytPlayer.stopVideo(); } catch {} }
@@ -650,20 +852,24 @@ document.getElementById('modal').addEventListener('click', e => {
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// ── Utils ─────────────────────────────────────────────────────────────────────
+// ── Search ────────────────────────────────────────────────────────────────────
 
-function esc(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
+let searchTimer = null;
+document.getElementById('search-input').addEventListener('input', e => {
+  clearTimeout(searchTimer);
+  const q = e.target.value;
+  searchTimer = setTimeout(() => {
+    if (!catalogData) return;
+    q.trim() ? showSearch(q) : showCategories();
+  }, 220);
+});
 
-// ── Boot ─────────────────────────────────────────────────────────────────────
+// ── Boot ──────────────────────────────────────────────────────────────────────
 
-document.getElementById('logo').addEventListener('click', showCategories);
+document.getElementById('logo').addEventListener('click', () => {
+  document.getElementById('search-input').value = '';
+  showCategories();
+});
 showCategories();
 </script>
 </body>
