@@ -270,21 +270,30 @@
       background: transparent;
       transition: background 0.15s;
     }
-    /* Barra negra superior: cubre el título de YouTube */
+    /* Barra negra superior: cubre el título y canal de YouTube */
     .yt-click-blocker::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 64px;
+      height: 72px;
       background: #000;
       border-radius: 14px 14px 0 0;
+    }
+    /* Barra negra inferior: cubre "Más videos", logo YouTube y controles nativos */
+    .yt-click-blocker::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60px;
+      background: #000;
+      border-radius: 0 0 14px 14px;
     }
 
     .yt-controls {
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 52px;
-      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      background: rgba(0,0,0,0.75);
       display: flex;
       align-items: center;
       gap: 12px;
