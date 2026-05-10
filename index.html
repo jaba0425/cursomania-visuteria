@@ -666,6 +666,28 @@
     }
     .article-tips-list li::before { content: '✓'; color: #30d158; font-weight: 800; flex-shrink: 0; }
 
+    /* Rule list */
+    .article-rule-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+    .article-rule-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #f5f0ff;
+      border-left: 4px solid #7C3AED;
+      border-radius: 0 10px 10px 0;
+      padding: 14px 16px;
+      font-size: 15px;
+      color: #3a3a3c;
+      line-height: 1.5;
+    }
+    .article-rule-list li .rule-label {
+      font-weight: 700;
+      color: #5b21b6;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .article-rule-list li::before { content: '◆'; color: #7C3AED; font-size: 11px; flex-shrink: 0; margin-top: 3px; }
+
     /* Article image */
     .article-img-wrap {
       margin: 28px 0;
@@ -1336,6 +1358,11 @@ function renderSection(sec, art) {
     case 'tips-list':
       return `<ul class="article-tips-list">${sec.items.map(item =>
         `<li>${esc(item)}</li>`
+      ).join('')}</ul>`;
+
+    case 'rule-list':
+      return `<ul class="article-rule-list">${sec.items.map(item =>
+        `<li><span class="rule-label">${esc(item.label)}</span><span>${esc(item.text)}</span></li>`
       ).join('')}</ul>`;
 
     case 'closing':

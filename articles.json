@@ -192,5 +192,173 @@
         "text": "Recuerda: cada accesorio que creas es una oportunidad de ingreso."
       }
     ]
+  },
+  {
+    "id": "guia-colores",
+    "title": "Combinaciones de Colores y Materiales",
+    "subtitle": "Descubre cómo combinar colores y materiales para crear accesorios que enamoran y se venden solos.",
+    "emoji": "🎨",
+    "color": "#7C3AED",
+    "bg": "#F5F0FF",
+    "readTime": "7 min",
+    "category": "Diseño",
+    "sections": [
+      {
+        "type": "intro",
+        "text": "La combinación de colores es uno de los factores que más influye en que un accesorio se vea profesional y se venda fácil. No necesitas ser diseñadora de modas — solo necesitas entender unas reglas básicas que las marcas de bisutería exitosas ya aplican. Esta guía te lo explica de forma práctica y visual."
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1624613673129-d5ffef60eba8?w=900&q=80",
+        "alt": "Cuentas azules y plateadas sobre superficie de madera",
+        "caption": "El color correcto puede hacer que tu accesorio pase de ordinario a irresistible."
+      },
+      {
+        "type": "heading",
+        "number": "1",
+        "title": "Reglas básicas para combinar colores"
+      },
+      {
+        "type": "text",
+        "text": "Antes de escoger tus materiales, ten en cuenta estas 4 reglas que nunca fallan:"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Regla de los 3 colores:",
+            "text": "No uses más de 3 colores en una misma pieza. Más de eso se ve recargado y poco profesional."
+          },
+          {
+            "label": "Un color protagonista:",
+            "text": "Define un color principal (el que más aparece) y los demás son apoyo. Ejemplo: azul marino con detalles dorados y perlas blancas."
+          },
+          {
+            "label": "Los neutros son tus aliados:",
+            "text": "Blanco, negro, beige, gris y dorado combinan con prácticamente todo. Úsalos para equilibrar combinaciones atrevidas."
+          },
+          {
+            "label": "Tonos similares o contrastantes:",
+            "text": "Puedes ir a lo armónico (colores cercanos en el círculo cromático: azul + verde) o a lo llamativo (colores opuestos: naranja + azul)."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "2",
+        "title": "Combinaciones populares que más se venden"
+      },
+      {
+        "type": "text",
+        "text": "Estas combinaciones son favoritas en el mercado latinoamericano de bisutería artesanal:"
+      },
+      {
+        "type": "table",
+        "headers": ["Combinación", "Estilo", "Ideal para"],
+        "rows": [
+          ["Dorado + Blanco + Verde menta", "Fresco y elegante", "Primavera / verano"],
+          ["Negro + Dorado + Rojo", "Sofisticado y audaz", "Noche / eventos"],
+          ["Rosado + Nude + Dorado", "Femenino y suave", "Uso diario / regalo"],
+          ["Azul marino + Plateado + Blanco", "Náutico y clásico", "Casuales / juvenil"],
+          ["Verde esmeralda + Dorado + Marrón", "Terroso y natural", "Bohemio / eco"],
+          ["Lila + Plateado + Blanco", "Romántico y delicado", "San Valentín / regalo"],
+          ["Naranja + Amarillo + Dorado", "Tropical y alegre", "Festivales / verano"],
+          ["Negro + Plateado + Transparente", "Minimalista moderno", "Oficina / ciudad"]
+        ],
+        "highlight": []
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1561060511-78b14b799fe1?w=900&q=80",
+        "alt": "Collar de gemas multicolor sobre fondo claro",
+        "caption": "Combinar bien los colores es lo que hace que una pieza se vea de colección."
+      },
+      {
+        "type": "heading",
+        "number": "3",
+        "title": "Combinaciones con cristales y mostacillas"
+      },
+      {
+        "type": "text",
+        "text": "Los cristales y mostacillas son los materiales más versátiles. Estas son las combinaciones que mejor funcionan:"
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Cristales transparentes + hilo dorado = elegancia atemporal",
+          "Mostacillas negras + detalles plateados = estilo urbano y moderno",
+          "Cristales rosados + perlas pequeñas = look romántico que vende mucho en San Valentín",
+          "Mostacillas multicolor + hilo elástico = pulseras de colección juvenil, perfectas para vender en sets",
+          "Cristales verdes o azules + cadena dorada = estilo de moda boho-chic muy popular en Instagram"
+        ]
+      },
+      {
+        "type": "tip",
+        "text": "Para pulseras tipo \"dúo\", usa el mismo color base pero cambia el acabado: una con cristales brillantes y otra con mostacillas mate del mismo tono. Se ven como un set premium."
+      },
+      {
+        "type": "heading",
+        "number": "4",
+        "title": "Combinaciones con perlas y dijes"
+      },
+      {
+        "type": "text",
+        "text": "Las perlas dan un toque de lujo accesible. Combínalas así para maximizar el impacto:"
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Perlas blancas + cadena dorada fina = clásico que nunca falla, siempre en tendencia",
+          "Perlas color champagne + dije de corazón o mariposa = joyería romántica muy popular para regalo",
+          "Perlas negras + argollas plateadas = estilo oscuro elegante para clientas más jóvenes",
+          "Perlas pequeñas mezcladas con cristales = textura visual que eleva el precio percibido",
+          "Perlas en tonos pastel (lila, rosado, menta) + hilo plateado = tendencia 2024-2025 muy pedida"
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "5",
+        "title": "Top 5 combinaciones más vendidas en Latinoamérica"
+      },
+      {
+        "type": "text",
+        "text": "Según vendedoras de bisutería en Colombia, México y Perú, estas son las combinaciones con mayor rotación:"
+      },
+      {
+        "type": "table",
+        "headers": ["#", "Combinación", "Tipo de accesorio"],
+        "rows": [
+          ["🥇 1", "Rosado + Dorado + Perla blanca", "Pulseras y collares"],
+          ["🥈 2", "Negro + Dorado + Cristal transparente", "Aretes y pulseras"],
+          ["🥉 3", "Azul + Plateado + Blanco", "Sets completos"],
+          ["4", "Verde esmeralda + Dorado + Nude", "Collares boho"],
+          ["5", "Multicolor (arcoíris) + Hilo elástico", "Pulseras juveniles y sets"]
+        ],
+        "highlight": [0, 1, 2]
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1609428126821-b26911b6d662?w=900&q=80",
+        "alt": "Cuentas de colores en caja organizadora",
+        "caption": "Tener los materiales organizados por color te ayuda a combinar más rápido y crear más."
+      },
+      {
+        "type": "heading",
+        "number": "6",
+        "title": "Tips finales para combinar con éxito"
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Antes de hacer una pieza nueva, prueba las cuentas juntas sobre una superficie blanca — la luz natural te muestra si el combo funciona.",
+          "Sigue las tendencias de colores de temporada: revisa qué colores están de moda en ropa y trasládalos a tus accesorios.",
+          "Fotografía tus mejores combinaciones y guárdalas como referencia. Tu propio catálogo de pruebas es tu mejor herramienta creativa."
+        ]
+      },
+      {
+        "type": "closing",
+        "text": "El color es tu primer vendedor — úsalo con intención y tus piezas hablarán solas."
+      }
+    ]
   }
 ]
