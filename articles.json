@@ -1,0 +1,178 @@
+[
+  {
+    "id": "guia-precios",
+    "title": "Guía de Precios para Vender tus Accesorios",
+    "subtitle": "Aprende a calcular precios justos que te den buena ganancia sin miedo a cobrar lo que vales.",
+    "emoji": "💰",
+    "color": "#C9A84C",
+    "bg": "#FDF8EE",
+    "readTime": "6 min",
+    "category": "Negocio",
+    "sections": [
+      {
+        "type": "intro",
+        "text": "Poner el precio correcto a tus accesorios es una de las claves más importantes para que tu negocio sea rentable. Muchas emprendedoras cometen el error de cobrar muy poco (por miedo a no vender) o demasiado (sin justificarlo). En esta guía vas a aprender una fórmula sencilla y práctica para calcular precios justos que te den buena ganancia."
+      },
+      {
+        "type": "heading",
+        "number": "1",
+        "title": "La fórmula básica para calcular precios"
+      },
+      {
+        "type": "text",
+        "text": "Esta es la fórmula que recomendamos para cualquier accesorio que hagas:"
+      },
+      {
+        "type": "formula",
+        "label": "FÓRMULA DE PRECIO",
+        "formula": "Precio de venta = (Costo de materiales + Costo de tiempo + Gastos extras) × 2.5",
+        "note": "El multiplicador de 2.5 te da un margen de ganancia saludable (entre 50% y 60%). Si tu mercado lo permite, puedes subirlo a 3 o más."
+      },
+      {
+        "type": "heading",
+        "number": "2",
+        "title": "¿Cuánto vale tu hora de trabajo?"
+      },
+      {
+        "type": "text",
+        "text": "Este es el punto que más se olvida. Tu tiempo tiene valor real. Una forma práctica de calcularlo:"
+      },
+      {
+        "type": "steps",
+        "items": [
+          "Define cuánto quieres ganar al mes (ej: $1.500.000 COP)",
+          "Divide entre los días que trabajas (ej: 20 días)",
+          "Divide entre las horas diarias dedicadas (ej: 4 horas)",
+          "Resultado: tu hora vale $18.750 COP"
+        ]
+      },
+      {
+        "type": "tip",
+        "text": "Si haces una pulsera en 20 minutos y tu hora vale $18.750, el costo de tu tiempo en esa pieza es $6.250. ¡No lo regales!"
+      },
+      {
+        "type": "heading",
+        "number": "3",
+        "title": "Ejemplo: precio de una pulsera"
+      },
+      {
+        "type": "text",
+        "text": "Veamos un ejemplo paso a paso con números reales:"
+      },
+      {
+        "type": "table",
+        "headers": ["Concepto", "Detalle", "Costo"],
+        "rows": [
+          ["Materiales", "Hilo encerado, balines dorados, dije", "$3.500"],
+          ["Tiempo", "20 minutos (hora: $10.000)", "$3.333"],
+          ["Empaque", "Bolsita + tarjeta", "$800"],
+          ["TOTAL COSTO", "", "$7.633"],
+          ["PRECIO DE VENTA (×2.5)", "", "$19.000"]
+        ],
+        "highlight": [3, 4]
+      },
+      {
+        "type": "tip",
+        "text": "Redondea siempre hacia arriba en números bonitos: $19.000 o $20.000. Nunca pongas precios como $19.083."
+      },
+      {
+        "type": "heading",
+        "number": "4",
+        "title": "Ejemplo: precio de un collar"
+      },
+      {
+        "type": "text",
+        "text": "Los collares suelen llevar más material y más tiempo de elaboración:"
+      },
+      {
+        "type": "table",
+        "headers": ["Concepto", "Detalle", "Costo"],
+        "rows": [
+          ["Materiales", "Cadena, cristales, dije, argollas", "$8.000"],
+          ["Tiempo", "40 minutos (hora: $10.000)", "$6.666"],
+          ["Empaque", "Caja pequeña + tarjeta", "$1.500"],
+          ["TOTAL COSTO", "", "$16.166"],
+          ["PRECIO DE VENTA (×2.5)", "", "$40.000"]
+        ],
+        "highlight": [3, 4]
+      },
+      {
+        "type": "heading",
+        "number": "5",
+        "title": "Multiplicador según tipo de producto"
+      },
+      {
+        "type": "text",
+        "text": "El margen de ganancia depende del tipo de accesorio y tu mercado objetivo:"
+      },
+      {
+        "type": "table",
+        "headers": ["Tipo de producto", "Multiplicador", "Margen aprox."],
+        "rows": [
+          ["Pulseras sencillas", "×2 a ×2.5", "50% - 60%"],
+          ["Pulseras con cristales/perlas", "×2.5 a ×3", "60% - 66%"],
+          ["Collares elegantes", "×3 a ×3.5", "66% - 71%"],
+          ["Sets / Combos", "×2.5 a ×3", "60% - 66%"],
+          ["Accesorios personalizados", "×3 a ×4", "66% - 75%"]
+        ],
+        "highlight": []
+      },
+      {
+        "type": "heading",
+        "number": "6",
+        "title": "Tabla de precios de referencia (Colombia)"
+      },
+      {
+        "type": "text",
+        "text": "Estos precios son una referencia para el mercado colombiano:"
+      },
+      {
+        "type": "price-table",
+        "headers": ["Accesorio", "Precio mínimo", "Precio recomendado", "Precio premium"],
+        "rows": [
+          ["Pulsera sencilla", "$8.000", "$12.000 – $15.000", "$18.000 – $25.000"],
+          ["Pulsera con cristales", "$12.000", "$18.000 – $25.000", "$30.000 – $45.000"],
+          ["Collar sencillo", "$15.000", "$25.000 – $35.000", "$40.000 – $60.000"],
+          ["Collar elegante", "$25.000", "$40.000 – $55.000", "$60.000 – $90.000"],
+          ["Aretes", "$8.000", "$15.000 – $22.000", "$25.000 – $40.000"],
+          ["Set completo", "$25.000", "$45.000 – $65.000", "$70.000 – $120.000"]
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "7",
+        "title": "Errores comunes al poner precios"
+      },
+      {
+        "type": "error-list",
+        "items": [
+          "Cobrar solo el costo de los materiales (olvidar tu tiempo y empaque)",
+          "Bajar precios por miedo a que no compren",
+          "Compararse con precios de bisutería importada de baja calidad",
+          "No incluir gastos de envío o domicilio en el cálculo",
+          "Poner precios impares o confusos (mejor $25.000 que $24.750)",
+          "Regalar accesorios en vez de dar descuentos estratégicos"
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "8",
+        "title": "Tips para vender con seguridad"
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Investiga los precios de tu competencia directa (no la importada) para ubicarte en un rango competitivo.",
+          "Si vendes por redes sociales, nunca pongas el precio en la foto. Haz que te escriban para generar conversación.",
+          "Ofrece precios especiales por combo (2 pulseras) en vez de bajar el precio unitario.",
+          "Revisa tus precios cada 3 meses: los materiales suben y tu precio también debe ajustarse.",
+          "Crea una lista de precios fija y úsala siempre. La consistencia genera confianza."
+        ]
+      },
+      {
+        "type": "closing",
+        "text": "Recuerda: cada accesorio que creas es una oportunidad de ingreso. ¡Tu talento vale!"
+      }
+    ]
+  }
+]

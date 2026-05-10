@@ -70,6 +70,24 @@
     }
     #search-input::placeholder { color: #8e8e93; }
 
+    /* ── Nav link Aprende ── */
+    .nav-learn {
+      flex-shrink: 0;
+      background: none;
+      border: 1.5px solid rgba(0,0,0,0.12);
+      border-radius: 20px;
+      padding: 7px 16px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1d1d1f;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    .nav-learn:hover { background: #f0f0f5; border-color: rgba(0,0,0,0.2); }
+    .nav-learn.active { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
+
     .breadcrumb {
       display: flex;
       align-items: center;
@@ -455,6 +473,211 @@
     .yt-fs-btn:hover { opacity: 1; }
     .yt-fs-btn svg { width: 20px; height: 20px; }
 
+    /* ── Sección Aprende ── */
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .learn-card {
+      border-radius: 20px;
+      padding: 32px 28px;
+      cursor: pointer;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .learn-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+    .learn-card-emoji { font-size: 44px; line-height: 1; }
+    .learn-card-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    .learn-card-title { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; line-height: 1.25; }
+    .learn-card-desc { font-size: 14px; color: #6e6e73; line-height: 1.5; }
+    .learn-card-meta { font-size: 12px; color: #8e8e93; margin-top: 4px; }
+
+    /* ── Article reader ── */
+    .article-body {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 17px;
+      line-height: 1.75;
+      color: #1d1d1f;
+    }
+    .article-hero {
+      border-radius: 20px;
+      padding: 40px 36px;
+      margin-bottom: 40px;
+    }
+    .article-hero-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .article-hero-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .article-hero-sub { font-size: 16px; opacity: 0.75; line-height: 1.5; }
+    .article-hero-meta { font-size: 13px; opacity: 0.55; margin-top: 20px; }
+
+    .article-intro {
+      font-size: 17px;
+      color: #3a3a3c;
+      line-height: 1.8;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid #e5e5ea;
+    }
+    .article-section { margin-bottom: 36px; }
+    .article-section-heading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .article-section-num {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800;
+      flex-shrink: 0;
+      color: #fff;
+    }
+    .article-section-title { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
+    .article-text { margin-bottom: 16px; color: #3a3a3c; }
+
+    /* Formula */
+    .article-formula {
+      background: #1d1d1f;
+      color: #fff;
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 20px 0;
+    }
+    .article-formula-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #C9A84C;
+      margin-bottom: 12px;
+    }
+    .article-formula-text { font-size: 18px; font-weight: 600; line-height: 1.5; }
+    .article-formula-note { font-size: 14px; color: rgba(255,255,255,0.65); margin-top: 12px; line-height: 1.5; }
+
+    /* Tip box */
+    .article-tip {
+      background: #FDF3DC;
+      border-left: 4px solid #C9A84C;
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 15px;
+      color: #5a4a1a;
+      line-height: 1.6;
+    }
+    .article-tip::before { content: '💡 '; font-style: normal; }
+
+    /* Steps */
+    .article-steps { margin: 16px 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .article-steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: #3a3a3c;
+    }
+    .step-num {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: #1d1d1f;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Tables */
+    .article-table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 12px; border: 1px solid #e5e5ea; }
+    .article-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .article-table th {
+      background: #1d1d1f;
+      color: #fff;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .article-table th:first-child { border-radius: 12px 0 0 0; }
+    .article-table th:last-child { border-radius: 0 12px 0 0; }
+    .article-table td { padding: 11px 16px; border-bottom: 1px solid #f0f0f5; }
+    .article-table tr:last-child td { border-bottom: none; }
+    .article-table tr:nth-child(even) td { background: #f9f9fb; }
+    .article-table .row-highlight td { background: #FDF3DC; font-weight: 700; color: #5a4a1a; }
+
+    /* Price table (3 tiers) */
+    .article-table .tier-min { color: #6e6e73; }
+    .article-table .tier-rec { color: #1a7a3c; font-weight: 600; }
+    .article-table .tier-prem { color: #8B5E00; font-weight: 600; }
+
+    /* Error list */
+    .article-error-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
+    .article-error-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #fff5f6;
+      border-left: 4px solid #ff3b5a;
+      border-radius: 0 10px 10px 0;
+      padding: 12px 16px;
+      font-size: 15px;
+      color: #3a3a3c;
+      line-height: 1.5;
+    }
+    .article-error-list li::before { content: '✗'; color: #ff3b5a; font-weight: 800; flex-shrink: 0; }
+
+    /* Tips list */
+    .article-tips-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
+    .article-tips-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #f0faf4;
+      border-left: 4px solid #30d158;
+      border-radius: 0 10px 10px 0;
+      padding: 12px 16px;
+      font-size: 15px;
+      color: #3a3a3c;
+      line-height: 1.5;
+    }
+    .article-tips-list li::before { content: '✓'; color: #30d158; font-weight: 800; flex-shrink: 0; }
+
+    /* Closing */
+    .article-closing {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid #e5e5ea;
+      margin-top: 40px;
+      font-size: 17px;
+      font-style: italic;
+      color: #6e6e73;
+    }
+    .article-closing strong { color: #C9A84C; font-style: normal; font-size: 20px; display: block; margin-top: 8px; }
+
     /* ── Modo pantalla completa (CSS) ── */
     .modal-bg.fs-mode {
       padding: 8px 8px 8px;
@@ -498,6 +721,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="search" id="search-input" placeholder="Buscar videos…" autocomplete="off">
     </div>
+    <button class="nav-learn" id="nav-learn-btn">📖 Aprende</button>
     <div class="breadcrumb" id="breadcrumb"></div>
   </div>
 </header>
@@ -632,6 +856,7 @@ function makeVideoCard(v, { showBadge = false } = {}) {
 async function showCategories() {
   setBreadcrumb(null);
   document.title = 'Cursomania – Bisutería';
+  document.getElementById('nav-learn-btn')?.classList.remove('active');
 
   if (!catalogData) {
     setMain('<div class="state-block"><div class="spinner"></div><span>Cargando…</span></div>');
@@ -934,12 +1159,172 @@ document.getElementById('search-input').addEventListener('input', e => {
   }, 220);
 });
 
+// ── Sección Aprende ──────────────────────────────────────────────────────────
+
+let articlesData = null;
+
+async function showLearn() {
+  setBreadcrumb(null);
+  document.title = 'Aprende – Cursomania';
+  document.getElementById('search-input').value = '';
+  document.getElementById('nav-learn-btn').classList.add('active');
+
+  if (!articlesData) {
+    setMain('<div class="state-block"><div class="spinner"></div><span>Cargando guías…</span></div>');
+    try {
+      const res = await fetch('articles.json');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      articlesData = await res.json();
+    } catch (e) {
+      setMain(`<div class="state-block">⚠️ Error al cargar guías.<br><small>${esc(e.message)}</small></div>`);
+      return;
+    }
+  }
+
+  const grid = document.createElement('div');
+  grid.className = 'learn-grid';
+
+  articlesData.forEach((art, idx) => {
+    const card = document.createElement('div');
+    card.className = 'learn-card';
+    card.dataset.artIdx = idx;
+    card.style.cssText = `background:${art.bg};`;
+    card.innerHTML = `
+      <span class="learn-card-emoji">${art.emoji}</span>
+      <span class="learn-card-tag" style="color:${art.color}">${esc(art.category)}</span>
+      <h2 class="learn-card-title">${esc(art.title)}</h2>
+      <p class="learn-card-desc">${esc(art.subtitle)}</p>
+      <span class="learn-card-meta">📖 ${esc(art.readTime)} de lectura</span>
+    `;
+    grid.appendChild(card);
+  });
+
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.learn-card');
+    if (card) showArticle(Number(card.dataset.artIdx));
+  });
+
+  const container = document.getElementById('main');
+  container.innerHTML = `<h1 class="page-title">Aprende</h1><p class="page-subtitle">Guías para hacer crecer tu negocio</p>`;
+  container.appendChild(grid);
+}
+
+function showArticle(idx) {
+  const art = articlesData[idx];
+  document.title = `${art.title} – Cursomania`;
+  setBreadcrumb(art.title);
+
+  const container = document.getElementById('main');
+  container.innerHTML = '';
+
+  const backBtn = document.createElement('button');
+  backBtn.className = 'back-btn';
+  backBtn.textContent = '← Guías';
+  backBtn.addEventListener('click', showLearn);
+  container.appendChild(backBtn);
+
+  const body = document.createElement('div');
+  body.className = 'article-body';
+
+  // Hero
+  body.insertAdjacentHTML('beforeend', `
+    <div class="article-hero" style="background:${art.bg}">
+      <div class="article-hero-tag" style="color:${art.color}">${esc(art.category)}</div>
+      <h1 class="article-hero-title">${esc(art.title)}</h1>
+      <p class="article-hero-sub">${esc(art.subtitle)}</p>
+      <p class="article-hero-meta">${art.emoji} ${esc(art.readTime)} de lectura</p>
+    </div>
+  `);
+
+  // Sections
+  art.sections.forEach(sec => {
+    body.insertAdjacentHTML('beforeend', renderSection(sec, art));
+  });
+
+  container.appendChild(body);
+}
+
+function renderSection(sec, art) {
+  switch (sec.type) {
+    case 'intro':
+      return `<p class="article-intro">${esc(sec.text)}</p>`;
+
+    case 'heading':
+      return `
+        <div class="article-section">
+        <div class="article-section-heading">
+          <span class="article-section-num" style="background:${art.color}">${sec.number}</span>
+          <h2 class="article-section-title">${esc(sec.title)}</h2>
+        </div>
+      `;
+
+    case 'text':
+      return `<p class="article-text">${esc(sec.text)}</p>`;
+
+    case 'formula':
+      return `
+        <div class="article-formula">
+          <div class="article-formula-label">${esc(sec.label)}</div>
+          <div class="article-formula-text">${esc(sec.formula)}</div>
+          ${sec.note ? `<div class="article-formula-note">${esc(sec.note)}</div>` : ''}
+        </div>
+      `;
+
+    case 'tip':
+      return `<div class="article-tip">${esc(sec.text)}</div>`;
+
+    case 'steps':
+      return `<ol class="article-steps">${sec.items.map((item, i) =>
+        `<li><span class="step-num">${i+1}</span><span>${esc(item)}</span></li>`
+      ).join('')}</ol>`;
+
+    case 'table':
+    case 'price-table': {
+      const isPriceTable = sec.type === 'price-table';
+      const rows = sec.rows.map((row, ri) => {
+        const isHighlight = sec.highlight?.includes(ri);
+        const cells = row.map((cell, ci) => {
+          let cls = '';
+          if (isPriceTable) {
+            if (ci === 1) cls = 'tier-min';
+            if (ci === 2) cls = 'tier-rec';
+            if (ci === 3) cls = 'tier-prem';
+          }
+          return `<td class="${cls}">${esc(cell)}</td>`;
+        }).join('');
+        return `<tr class="${isHighlight ? 'row-highlight' : ''}">${cells}</tr>`;
+      }).join('');
+      const headers = sec.headers.map(h => `<th>${esc(h)}</th>`).join('');
+      return `<div class="article-table-wrap"><table class="article-table"><thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table></div>`;
+    }
+
+    case 'error-list':
+      return `<ul class="article-error-list">${sec.items.map(item =>
+        `<li>${esc(item)}</li>`
+      ).join('')}</ul>`;
+
+    case 'tips-list':
+      return `<ul class="article-tips-list">${sec.items.map(item =>
+        `<li>${esc(item)}</li>`
+      ).join('')}</ul>`;
+
+    case 'closing':
+      return `</div><div class="article-closing">${esc(sec.text)}<strong>¡Tu talento vale! 💛</strong></div>`;
+
+    default: return '';
+  }
+}
+
 // ── Boot ──────────────────────────────────────────────────────────────────────
 
 document.getElementById('logo').addEventListener('click', () => {
   document.getElementById('search-input').value = '';
+  document.getElementById('nav-learn-btn').classList.remove('active');
   showCategories();
 });
+
+document.getElementById('nav-learn-btn').addEventListener('click', showLearn);
+
 showCategories();
 </script>
 </body>
