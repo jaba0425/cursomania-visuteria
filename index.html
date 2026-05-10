@@ -666,6 +666,28 @@
     }
     .article-tips-list li::before { content: '✓'; color: #30d158; font-weight: 800; flex-shrink: 0; }
 
+    /* Article image */
+    .article-img-wrap {
+      margin: 28px 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .article-img-wrap img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 380px;
+    }
+    .article-img-caption {
+      background: #f5f5f7;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: #6e6e73;
+      font-style: italic;
+      text-align: center;
+    }
+
     /* Closing */
     .article-closing {
       text-align: center;
@@ -1248,6 +1270,14 @@ function renderSection(sec, art) {
   switch (sec.type) {
     case 'intro':
       return `<p class="article-intro">${esc(sec.text)}</p>`;
+
+    case 'image':
+      return `
+        <div class="article-img-wrap">
+          <img src="${esc(sec.url)}" alt="${esc(sec.alt)}" loading="lazy">
+          ${sec.caption ? `<div class="article-img-caption">${esc(sec.caption)}</div>` : ''}
+        </div>
+      `;
 
     case 'heading':
       return `

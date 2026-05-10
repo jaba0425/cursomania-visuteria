@@ -14,6 +14,12 @@
         "text": "Poner el precio correcto a tus accesorios es una de las claves más importantes para que tu negocio sea rentable. Muchas emprendedoras cometen el error de cobrar muy poco (por miedo a no vender) o demasiado (sin justificarlo). En esta guía vas a aprender una fórmula sencilla y práctica para calcular precios justos que te den buena ganancia."
       },
       {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1756792339453-bc4aa26fc0cd?w=900&q=80",
+        "alt": "Pulseras artesanales coloridas en filas",
+        "caption": "Cada pieza que haces tiene un valor real — y tu precio debe reflejarlo."
+      },
+      {
         "type": "heading",
         "number": "1",
         "title": "La fórmula básica para calcular precios"
@@ -49,6 +55,12 @@
       {
         "type": "tip",
         "text": "Si haces una pulsera en 20 minutos y tu hora vale $18.750, el costo de tu tiempo en esa pieza es $6.250. ¡No lo regales!"
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1655111379423-b85edc4da9ac?w=900&q=80",
+        "alt": "Artesana trabajando en bisutería",
+        "caption": "Tu tiempo y habilidad son parte del valor de cada pieza."
       },
       {
         "type": "heading",
@@ -139,6 +151,12 @@
         ]
       },
       {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1608508644127-ba99d7732fee?w=900&q=80",
+        "alt": "Accesorios de bisutería exhibidos",
+        "caption": "Un buen precio comunica calidad — no lo subvalores."
+      },
+      {
         "type": "heading",
         "number": "7",
         "title": "Errores comunes al poner precios"
@@ -171,7 +189,7 @@
       },
       {
         "type": "closing",
-        "text": "Recuerda: cada accesorio que creas es una oportunidad de ingreso. ¡Tu talento vale!"
+        "text": "Recuerda: cada accesorio que creas es una oportunidad de ingreso."
       }
     ]
   }
