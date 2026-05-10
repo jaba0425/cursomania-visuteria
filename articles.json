@@ -360,5 +360,181 @@
         "text": "El color es tu primer vendedor — úsalo con intención y tus piezas hablarán solas."
       }
     ]
+  },
+  {
+    "id": "guia-empaques",
+    "title": "Mini Guía de Empaques Bonitos y Económicos",
+    "subtitle": "Haz que tus accesorios se vean premium sin gastar de más — el empaque es parte de la venta.",
+    "emoji": "📦",
+    "color": "#0D9488",
+    "bg": "#F0FDFA",
+    "readTime": "5 min",
+    "category": "Presentación",
+    "sections": [
+      {
+        "type": "intro",
+        "text": "El empaque es lo primero que tu cliente ve y toca. Un buen empaque puede hacer que un accesorio de $15.000 se perciba como uno de $40.000. No necesitas gastar mucho: necesitas creatividad. Aquí te enseñamos cómo empacar bonito sin arruinar tu margen de ganancia."
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1549465220-1925ef0c4ac4?w=900&q=80",
+        "alt": "Cajas de regalo con cintas y lazos",
+        "caption": "Un empaque bien pensado convierte una venta en una experiencia memorable."
+      },
+      {
+        "type": "heading",
+        "number": "1",
+        "title": "Tipos de empaques para bisutería"
+      },
+      {
+        "type": "table",
+        "headers": ["Tipo", "Costo aprox.", "Ideal para"],
+        "rows": [
+          ["Bolsita de organza", "$300 – $500 COP", "Pulseras sencillas, aretes"],
+          ["Bolsa kraft con ventana", "$500 – $800 COP", "Sets, collares"],
+          ["Caja de cartón pequeña", "$800 – $1.500 COP", "Regalos, sets premium"],
+          ["Sobre de papel craft", "$200 – $400 COP", "Aretes, pulseras"],
+          ["Tarjeta exhibidora", "$100 – $300 COP", "Aretes, pulseras"],
+          ["Caja de acetato", "$1.000 – $2.000 COP", "Sets de regalo exclusivos"]
+        ],
+        "highlight": []
+      },
+      {
+        "type": "heading",
+        "number": "2",
+        "title": "Bolsitas económicas que se ven caras"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Bolsita de organza dorada o plateada:",
+            "text": "Cuestan desde $300 y dan un look lujoso. Son el empaque más vendido para pulseras y aretes."
+          },
+          {
+            "label": "Bolsita kraft con cinta de raso:",
+            "text": "Compra las bolsas lisas y añade una cinta. Se ve artesanal y elegante al mismo tiempo."
+          },
+          {
+            "label": "Bolsita de terciopelo negro:",
+            "text": "Desde $500. Perfecta para accesorios premium — transmite exclusividad desde el primer vistazo."
+          }
+        ]
+      },
+      {
+        "type": "tip",
+        "text": "Compra bolsitas por mayor en plataformas como Mercado Libre o Shopee. El precio puede bajar hasta un 50%."
+      },
+      {
+        "type": "heading",
+        "number": "3",
+        "title": "Cajas económicas con estilo"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Caja kraft lisa + sticker personalizado:",
+            "text": "Cuesta menos de $1.000 y se ve profesional. El sticker con tu logo lo convierte en branding."
+          },
+          {
+            "label": "Caja de cartón con algodón:",
+            "text": "El algodón adentro hace que el accesorio se vea como joyería fina. Costo extra mínimo, impacto enorme."
+          },
+          {
+            "label": "Caja reciclada decorada:",
+            "text": "Reutiliza cajas pequeñas y decóralas con washi tape o cinta. Sostenible y creativo."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=900&q=80",
+        "alt": "Bolsas y cajas de regalo coloridas para retail",
+        "caption": "La presentación puede costar poco y valer mucho — todo está en los detalles."
+      },
+      {
+        "type": "heading",
+        "number": "4",
+        "title": "Tarjetas para accesorios"
+      },
+      {
+        "type": "text",
+        "text": "Las tarjetas exhibidoras son clave para presentar aretes y pulseras de forma profesional:"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Tarjeta para aretes:",
+            "text": "Cartón de 300gr con dos agujeros. Puedes mandarlas a imprimir con tu logo desde muy bajo costo."
+          },
+          {
+            "label": "Tarjeta para pulseras:",
+            "text": "Un rectángulo de cartón donde enrollas la pulsera. Da estructura y hace que la pieza se vea organizada."
+          },
+          {
+            "label": "Tarjeta de agradecimiento:",
+            "text": "Una tarjetica de 5×5 cm con un mensaje lindo. Cuesta centavos y genera fidelidad del cliente."
+          }
+        ]
+      },
+      {
+        "type": "tip",
+        "text": "Puedes diseñar tus tarjetas gratis en Canva e imprimirlas en casa o en una papelería local."
+      },
+      {
+        "type": "heading",
+        "number": "5",
+        "title": "Cómo hacer empaques elegantes con bajo presupuesto"
+      },
+      {
+        "type": "text",
+        "text": "La clave está en los detalles. Estas acciones cuestan poco y elevan mucho la percepción:"
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Usa siempre un mismo color o estilo en todos tus empaques — eso crea identidad de marca reconocible.",
+          "Añade un lazo o cinta de raso. Cuesta menos de $200 por accesorio y transforma el empaque.",
+          "Incluye una tarjeta de agradecimiento escrita a mano — el toque personal que los clientes recuerdan.",
+          "Usa papel de seda dentro de la caja para dar volumen y proteger el accesorio.",
+          "Pon un sticker con tu logo o nombre de marca. Puedes mandarlos a hacer desde $15.000 el rollo."
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "6",
+        "title": "Ideas que hacen ver tu producto más caro"
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Empaque negro + cinta dorada = percepción de lujo instantánea.",
+          "Algodón o espuma dentro de la caja — el accesorio queda perfecto y el cliente lo percibe como joyería fina.",
+          "Tarjeta con instrucciones de cuidado — se ve muy profesional y genera confianza en tu marca.",
+          "Un sobre de papel mantequilla envolviendo el accesorio antes de meterlo en la caja.",
+          "Foto del empaque abierto para redes sociales — genera deseo de compra y aumenta el engagement."
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1584553421349-3557471bed79?w=900&q=80",
+        "alt": "Empaque elegante con lazo y cinta dorada",
+        "caption": "El empaque habla antes de que el cliente vea el accesorio — haz que diga lo correcto."
+      },
+      {
+        "type": "tip",
+        "text": "El empaque es parte de la experiencia. Si tu cliente dice '¡qué bonito empaque!', vas por buen camino."
+      },
+      {
+        "type": "tip",
+        "text": "Invierte máximo entre $500 y $1.500 en empaque por accesorio. Ya está incluido en tu fórmula de precio."
+      },
+      {
+        "type": "closing",
+        "text": "Recuerda: un buen empaque no es un gasto — es parte de lo que tu cliente está comprando."
+      }
+    ]
   }
 ]
