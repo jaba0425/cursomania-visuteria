@@ -536,5 +536,1195 @@
         "text": "Recuerda: un buen empaque no es un gasto — es parte de lo que tu cliente está comprando."
       }
     ]
+  },
+  {
+    "id": "guia-costos",
+    "title": "Calcula tus Costos y Ganancias",
+    "subtitle": "Controla tu negocio con números claros y reales — saber cuánto ganas es tan importante como saber hacer.",
+    "emoji": "📊",
+    "color": "#D97706",
+    "bg": "#FFFBEB",
+    "readTime": "7 min",
+    "category": "Negocio",
+    "sections": [
+      {
+        "type": "intro",
+        "text": "Para que tu negocio de bisutería sea realmente rentable, necesitas saber exactamente cuánto te cuesta hacer cada pieza y cuánto estás ganando. Esta guía te enseña a calcular costos paso a paso, con ejemplos reales y fáciles de replicar."
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80",
+        "alt": "Calculadora y documentos de números sobre escritorio",
+        "caption": "Quien controla sus números, controla su negocio."
+      },
+      {
+        "type": "heading",
+        "number": "1",
+        "title": "Cuánto cuesta hacer una pulsera"
+      },
+      {
+        "type": "text",
+        "text": "Ejemplo: Pulsera de hilo encerado con balines y dije"
+      },
+      {
+        "type": "table",
+        "headers": ["Material", "Cantidad", "Costo unitario", "Costo total"],
+        "rows": [
+          ["Hilo encerado", "40 cm", "$50/metro", "$20"],
+          ["Balines dorados 4mm", "15 unidades", "$80 c/u", "$1.200"],
+          ["Dije pequeño", "1 unidad", "$800", "$800"],
+          ["Nudo corredizo", "Incluido", "—", "$0"],
+          ["Bolsita empaque", "1 unidad", "$400", "$400"],
+          ["Tarjeta", "1 unidad", "$200", "$200"],
+          ["TOTAL", "", "", "$2.620"]
+        ],
+        "highlight": [6]
+      },
+      {
+        "type": "formula",
+        "label": "PRECIO DE VENTA",
+        "formula": "$2.620 × 2.5 = $6.550 → Redondeamos a $7.000",
+        "note": "Ganancia neta por pulsera: $4.380 COP"
+      },
+      {
+        "type": "heading",
+        "number": "2",
+        "title": "Cuánto cuesta hacer un collar"
+      },
+      {
+        "type": "text",
+        "text": "Ejemplo: Collar de cadena con cristales y dije"
+      },
+      {
+        "type": "table",
+        "headers": ["Material", "Cantidad", "Costo unitario", "Costo total"],
+        "rows": [
+          ["Cadena dorada", "45 cm", "$200/metro", "$9.000"],
+          ["Cristales facetados", "8 unidades", "$300 c/u", "$2.400"],
+          ["Dije mediano", "1 unidad", "$1.500", "$1.500"],
+          ["Argollas", "4 unidades", "$100 c/u", "$400"],
+          ["Broche langosta", "1 unidad", "$500", "$500"],
+          ["Caja empaque", "1 unidad", "$1.000", "$1.000"],
+          ["TOTAL", "", "", "$14.800"]
+        ],
+        "highlight": [6]
+      },
+      {
+        "type": "formula",
+        "label": "PRECIO DE VENTA",
+        "formula": "$14.800 × 2.5 = $37.000 → Redondeamos a $38.000",
+        "note": "Ganancia neta por collar: $23.200 COP"
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=900&q=80",
+        "alt": "Planta creciendo de un montón de monedas",
+        "caption": "Cada pieza que vendes es una semilla — tus ganancias crecen con cada venta."
+      },
+      {
+        "type": "heading",
+        "number": "3",
+        "title": "Cálculo del tiempo invertido"
+      },
+      {
+        "type": "text",
+        "text": "Tu tiempo también tiene valor. Define cuánto vale tu hora de trabajo según tu nivel:"
+      },
+      {
+        "type": "table",
+        "headers": ["Nivel", "Valor hora sugerido", "Equivale a"],
+        "rows": [
+          ["Principiante", "$8.000 – $10.000 COP", "Estás aprendiendo"],
+          ["Intermedia", "$12.000 – $15.000 COP", "Ya dominas técnicas básicas"],
+          ["Avanzada", "$18.000 – $25.000 COP", "Haces diseños complejos"]
+        ],
+        "highlight": []
+      },
+      {
+        "type": "tip",
+        "text": "Si una pulsera te toma 15 minutos y valoras tu hora en $10.000: Costo de tiempo = (15/60) × $10.000 = $2.500 COP. ¡No lo trabajes gratis!"
+      },
+      {
+        "type": "heading",
+        "number": "4",
+        "title": "Cálculo completo de margen de ganancia"
+      },
+      {
+        "type": "text",
+        "text": "Veamos el ejemplo completo incluyendo todos los costos — materiales, tiempo y empaque:"
+      },
+      {
+        "type": "table",
+        "headers": ["Concepto", "Pulsera", "Collar"],
+        "rows": [
+          ["Materiales", "$2.620", "$14.800"],
+          ["Tiempo (15-40 min)", "$2.500", "$6.666"],
+          ["Empaque", "$600", "$1.000"],
+          ["COSTO TOTAL", "$5.720", "$22.466"],
+          ["Precio venta (×2.5)", "$15.000", "$56.000"],
+          ["GANANCIA NETA", "$9.280", "$33.534"],
+          ["% de ganancia", "61%", "60%"]
+        ],
+        "highlight": [5, 6]
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1756792339453-bc4aa26fc0cd?w=900&q=80",
+        "alt": "Pulseras artesanales coloridas en filas",
+        "caption": "Cada pulsera que ves aquí tiene un costo real — conocerlo es tu mayor ventaja."
+      },
+      {
+        "type": "tip",
+        "text": "Lleva un registro en una libreta o en Excel de cada accesorio que haces con su costo real. Esto te permite ajustar precios con datos reales."
+      },
+      {
+        "type": "tip",
+        "text": "Compra materiales por mayor para reducir costos. Un paquete de 100 balines sale mucho más barato que comprar de a 10."
+      },
+      {
+        "type": "tip",
+        "text": "Revisa tus costos cada mes. Los proveedores suben precios y tú debes ajustar para no perder margen."
+      },
+      {
+        "type": "closing",
+        "text": "Recuerda: no es cuánto vendes, sino cuánto te queda. Controla tus costos y protege tus ganancias."
+      }
+    ]
+  },
+  {
+    "id": "guia-mas-vendidos",
+    "title": "Ideas de Accesorios Más Vendidos",
+    "subtitle": "Descubre qué accesorios tienen mayor demanda y por qué son tan exitosos en el mercado.",
+    "emoji": "🏆",
+    "color": "#DC2626",
+    "bg": "#FEF2F2",
+    "readTime": "6 min",
+    "category": "Diseño",
+    "sections": [
+      {
+        "type": "intro",
+        "text": "Saber qué accesorios se venden más te ahorra tiempo, dinero y frustración. En esta guía te mostramos los diseños que más demanda tienen en el mercado latinoamericano y por qué son tan exitosos."
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=900&q=80",
+        "alt": "Pulsera elegante de oro rosado con cristales",
+        "caption": "Los accesorios que más se venden no son los más complicados — son los más deseados."
+      },
+      {
+        "type": "heading",
+        "number": "1",
+        "title": "Pulseras con dijes"
+      },
+      {
+        "type": "text",
+        "text": "Son las reinas de las ventas. Las personas aman los dijes porque les dan un significado especial: un corazón, una estrella, un trébol, una inicial..."
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Son fáciles de hacer y tienen bajo costo de producción.",
+          "Puedes personalizarlas con la inicial del nombre o el signo zodiacal.",
+          "Se adaptan a cualquier estilo: casual, elegante, juvenil.",
+          "Precio sugerido: $10.000 – $25.000 COP"
+        ]
+      },
+      {
+        "type": "tip",
+        "text": "Los dijes de inicial son los que más se venden, especialmente para regalos de cumpleaños y Día de la Madre. Tenlos siempre en stock."
+      },
+      {
+        "type": "heading",
+        "number": "2",
+        "title": "Pulseras de pareja"
+      },
+      {
+        "type": "text",
+        "text": "Siempre hay parejas buscando algo que las represente. Las pulseras de pareja se venden increíblemente bien en fechas como San Valentín y aniversarios."
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Haz sets de 2: una en negro y otra en rojo, o una gruesa y otra delgada.",
+          "Añade dijes complementarios: llave + candado, sol + luna, rey + reina.",
+          "Precio sugerido por set: $20.000 – $40.000 COP"
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "3",
+        "title": "Pulseras religiosas"
+      },
+      {
+        "type": "text",
+        "text": "En Latinoamérica, los accesorios religiosos tienen un mercado enorme y constante. No pasan de moda."
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Pulseras con cruz — clásicas y de alta demanda todo el año.",
+          "Pulseras con Virgen María — muy populares para regalos religiosos.",
+          "Rosarios de mano — fáciles de hacer y con excelente margen.",
+          "Pulseras con ojo turco — tendencia constante, nunca pasan de moda.",
+          "Precio sugerido: $8.000 – $20.000 COP"
+        ]
+      },
+      {
+        "type": "tip",
+        "text": "Las pulseras del ojo turco y de la mano de Fátima son tendencia constante. Tener siempre stock de estas es una decisión de negocio inteligente."
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1535556116002-6281ff3e9f36?w=900&q=80",
+        "alt": "Aretes dorados elegantes sobre cuaderno y mármol",
+        "caption": "Los aretes con cristales y los diseños minimalistas son los favoritos del mercado femenino."
+      },
+      {
+        "type": "heading",
+        "number": "4",
+        "title": "Collares con iniciales"
+      },
+      {
+        "type": "text",
+        "text": "La personalización es uno de los factores que más vende. Un collar con la inicial del nombre es un regalo perfecto con alto valor percibido."
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Usa dijes de letra en acero o zamak dorado — duraderos y económicos.",
+          "Cadena delgada y elegante de 45 cm — el look más pedido.",
+          "Precio sugerido: $25.000 – $50.000 COP"
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "5",
+        "title": "Aretes con cristales"
+      },
+      {
+        "type": "text",
+        "text": "Los aretes son imprescindibles y las mujeres suelen tener muchos pares. Los aretes con cristales son elegantes, versátiles y muy pedidos."
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Aretes de argolla con cristal colgante — elegantes y femeninos.",
+          "Aretes tipo gota con cristal facetado — perfectos para eventos.",
+          "Aretes pequeños (topitos) con cristal — para uso diario.",
+          "Precio sugerido: $10.000 – $30.000 COP"
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "6",
+        "title": "Sets de accesorios"
+      },
+      {
+        "type": "text",
+        "text": "Los sets (collar + pulsera, o collar + pulsera + aretes) son excelentes porque aumentan tus ganancias por venta y son ideales para regalo."
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Aumentan el ticket promedio de compra — vendes 3 piezas en vez de 1.",
+          "Son la opción favorita para regalos de cumpleaños, Día de la Madre y graduaciones.",
+          "Se perciben como mucho más valiosos que las piezas individuales.",
+          "Precio sugerido: $35.000 – $80.000 COP"
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80",
+        "alt": "Collar de perlas en caja de joyería roja",
+        "caption": "Un collar bien presentado en su caja ya comunica regalo — y eso justifica el precio."
+      },
+      {
+        "type": "tip",
+        "text": "Empieza con 3-4 diseños estrella y perfecciónalos antes de hacer muchos diferentes. Menos opciones, más ventas."
+      },
+      {
+        "type": "tip",
+        "text": "Pregúntale a tus primeras clientas qué les gusta más. Sus respuestas son oro puro para saber qué producir."
+      },
+      {
+        "type": "closing",
+        "text": "Recuerda: no necesitas hacer todo — necesitas hacer bien lo que más se vende."
+      }
+    ]
+  },
+  {
+    "id": "guia-whatsapp",
+    "title": "Guía Básica para Vender por WhatsApp",
+    "subtitle": "Convierte tu WhatsApp en tu mejor herramienta de ventas con estrategias simples y mensajes que funcionan.",
+    "emoji": "💬",
+    "color": "#16A34A",
+    "bg": "#F0FDF4",
+    "readTime": "7 min",
+    "category": "Ventas",
+    "sections": [
+      {
+        "type": "intro",
+        "text": "WhatsApp es la herramienta de ventas número 1 en Latinoamérica. La mayoría de tus clientas prefieren escribirte por WhatsApp antes que comprar en una tienda online. Aquí te enseñamos cómo usarlo de forma profesional para vender más."
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&q=80",
+        "alt": "Teléfono inteligente con aplicaciones de redes sociales",
+        "caption": "Tu teléfono ya es tu tienda — solo necesitas saber cómo usarlo."
+      },
+      {
+        "type": "heading",
+        "number": "1",
+        "title": "Cómo mostrar tus accesorios en WhatsApp"
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Usa los estados de WhatsApp como tu vitrina diaria — publica todos los días.",
+          "Sube fotos y videos cortos de tus accesorios con buena iluminación.",
+          "Muestra el proceso de creación — a la gente le encanta ver cómo se hacen.",
+          "Publica testimonios de clientas satisfechas — las capturas de pantalla venden.",
+          "Crea un catálogo en WhatsApp Business con fotos y precios organizados."
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "2",
+        "title": "Cómo responder a clientes"
+      },
+      {
+        "type": "text",
+        "text": "La rapidez y amabilidad son clave. Usa estas plantillas como guía y adáptalas a tu estilo:"
+      },
+      {
+        "type": "formula",
+        "label": "EJEMPLO DE SALUDO",
+        "formula": "\"Hola [nombre]! Gracias por escribirme. Con mucho gusto te ayudo. ¿Qué accesorio te llamó la atención?\"",
+        "note": "Siempre personaliza con el nombre — hace que la clienta se sienta especial."
+      },
+      {
+        "type": "formula",
+        "label": "EJEMPLO PARA ENVIAR PRECIO",
+        "formula": "\"Esta pulsera la tengo a $18.000. Es de cristales con balines dorados, muy elegante. Te la puedo tener lista mañana. ¿Te gustaría apartarla?\"",
+        "note": "Describe el producto brevemente y cierra siempre con una pregunta."
+      },
+      {
+        "type": "formula",
+        "label": "EJEMPLO PARA CERRAR VENTA",
+        "formula": "\"¡Perfecto! Para confirmar tu pedido necesito: nombre completo, dirección y forma de pago. Te la envío con empaque de regalo incluido.\"",
+        "note": "Mencionar el empaque gratis genera más confianza para pagar."
+      },
+      {
+        "type": "heading",
+        "number": "3",
+        "title": "Cómo publicar estados que vendan"
+      },
+      {
+        "type": "text",
+        "text": "Tus estados deben seguir una estructura semanal variada para no aburrir y siempre estar en la mente de tus clientas:"
+      },
+      {
+        "type": "table",
+        "headers": ["Día", "Tipo de estado", "Ejemplo"],
+        "rows": [
+          ["Lunes", "Producto nuevo", "Foto del accesorio + precio"],
+          ["Martes", "Proceso creativo", "Video haciendo una pulsera"],
+          ["Miércoles", "Testimonio", "Captura de pantalla de clienta feliz"],
+          ["Jueves", "Combo/Oferta", "Set con precio especial"],
+          ["Viernes", "Detrás de cámaras", "Tu espacio de trabajo, empacando"],
+          ["Sábado", "Últimas unidades", "Urgencia: '¡Solo quedan 3!'"],
+          ["Domingo", "Inspiración", "Frase motivacional + tu accesorio"]
+        ],
+        "highlight": []
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1608508644127-ba99d7732fee?w=900&q=80",
+        "alt": "Accesorios de bisutería exhibidos",
+        "caption": "Lo que publicas en tus estados es tu vitrina — hazla irresistible cada día."
+      },
+      {
+        "type": "heading",
+        "number": "4",
+        "title": "Cómo tomar pedidos de forma organizada"
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Crea una plantilla de pedido que incluya: nombre, accesorio, cantidad, precio, forma de pago y dirección.",
+          "Usa notas de WhatsApp o una libreta para registrar todos los pedidos.",
+          "Confirma siempre el pedido con un resumen antes de hacer el envío."
+        ]
+      },
+      {
+        "type": "formula",
+        "label": "PLANTILLA DE CONFIRMACIÓN",
+        "formula": "\"Tu pedido:\n– 1 pulsera de cristales dorados: $18.000\n– 1 par de aretes a juego: $15.000\n– Envío: $8.000\n– TOTAL: $41.000\nForma de pago: Nequi\n¿Me confirmas para proceder?\"",
+        "note": "Enviar siempre el resumen evita malentendidos y genera confianza."
+      },
+      {
+        "type": "heading",
+        "number": "5",
+        "title": "Cómo cerrar ventas"
+      },
+      {
+        "type": "text",
+        "text": "Estas técnicas sencillas funcionan muy bien en WhatsApp:"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Escasez:",
+            "text": "'Solo me quedan 2 de este diseño' — la gente actúa cuando siente que algo se acaba."
+          },
+          {
+            "label": "Urgencia:",
+            "text": "'Este precio es solo hasta el viernes' — un límite de tiempo acelera la decisión."
+          },
+          {
+            "label": "Facilidad:",
+            "text": "'Te lo puedo enviar hoy mismo por Servientrega' — quítale fricción al proceso."
+          },
+          {
+            "label": "Garantía:",
+            "text": "'Si no te gusta, te cambio sin problema' — elimina el miedo a comprar."
+          },
+          {
+            "label": "Regalo:",
+            "text": "'Te incluyo empaque de regalo gratis' — percepción de valor extra sin costo."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=900&q=80",
+        "alt": "Bolsas de compra coloridas de retail",
+        "caption": "Cada venta cerrada es un pedido que sale de tu casa — organízate para crecer."
+      },
+      {
+        "type": "tip",
+        "text": "Responde en menos de 1 hora. Las clientas que esperan mucho se van a comprar a otra parte."
+      },
+      {
+        "type": "tip",
+        "text": "Usa WhatsApp Business (es gratis). Te permite crear un catálogo, respuestas rápidas y etiquetas para organizar clientes."
+      },
+      {
+        "type": "tip",
+        "text": "Nunca envíes audios largos. Usa textos cortos y claros con fotos de buena calidad."
+      },
+      {
+        "type": "closing",
+        "text": "Recuerda: WhatsApp no es solo un chat — es tu tienda, tu vitrina y tu canal de ventas más poderoso."
+      }
+    ]
+  },
+  {
+    "id": "guia-catalogo",
+    "title": "Catálogo de Accesorios Más Vendidos",
+    "subtitle": "Inspírate con los diseños que arrasan en ventas — adáptalos a tu estilo y empieza a producir.",
+    "emoji": "📋",
+    "color": "#92400E",
+    "bg": "#FEFCE8",
+    "readTime": "8 min",
+    "category": "Diseño",
+    "sections": [
+      {
+        "type": "intro",
+        "text": "Este catálogo te servirá como fuente de inspiración para crear tus propios diseños. Son los estilos más vendidos y populares actualmente. Puedes replicarlos o adaptarlos a tu estilo personal."
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1561060511-78b14b799fe1?w=900&q=80",
+        "alt": "Collar de gemas multicolor sobre fondo claro",
+        "caption": "Los mejores diseños combinan materiales simples con un acabado que se ve premium."
+      },
+      {
+        "type": "heading",
+        "number": "1",
+        "title": "Pulseras Elegantes"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Pulsera de cadena dorada con dije de corazón:",
+            "text": "Cadena de eslabones finos, dije de corazón en zamak dorado, cierre langosta. Look sofisticado para uso diario o eventos. Precio: $15.000 – $25.000 COP"
+          },
+          {
+            "label": "Pulsera de perlas blancas con broche magnético:",
+            "text": "Perlas de 6mm uniformes, broche magnético dorado. Ideal para regalos y fechas especiales. Precio: $18.000 – $30.000 COP"
+          },
+          {
+            "label": "Pulsera rígida dorada con cristal central:",
+            "text": "Aro metálico dorado con un cristal Swarovski-style en el centro. Minimalista y elegante. Precio: $20.000 – $35.000 COP"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "2",
+        "title": "Pulseras Minimalistas"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Pulsera de hilo con un solo balín:",
+            "text": "Hilo encerado negro o nude con un único balín dorado al centro. Nudo corredizo. Precio: $5.000 – $10.000 COP"
+          },
+          {
+            "label": "Pulsera de cadena finita con dije pequeño:",
+            "text": "Cadena ultra delgada con un mini dije (estrella, luna o corazón). Súper delicada. Precio: $12.000 – $20.000 COP"
+          },
+          {
+            "label": "Pulsera de hilo de seda con nudo:",
+            "text": "Hilo de seda de color pastel con nudo decorativo al centro. Simple y hermosa. Precio: $6.000 – $12.000 COP"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "3",
+        "title": "Pulseras con Cristales"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Pulsera de cristales facetados multicolor:",
+            "text": "Cristales de 4mm en tonos pastel intercalados con balines dorados. Elástica. Precio: $12.000 – $22.000 COP"
+          },
+          {
+            "label": "Pulsera de cristales transparentes con separadores:",
+            "text": "Cristales + separadores dorados tipo rondel. Brilla mucho. Precio: $15.000 – $28.000 COP"
+          },
+          {
+            "label": "Pulsera de un solo color de cristal:",
+            "text": "Cristales uniformes (azul, rojo o verde) con balines en los extremos. Nudo corredizo. Precio: $10.000 – $18.000 COP"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "4",
+        "title": "Pulseras Religiosas"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Rosario de mano con cruz:",
+            "text": "Perlas pequeñas tipo rosario, cruz metálica colgante. Muy popular. Precio: $8.000 – $15.000 COP"
+          },
+          {
+            "label": "Pulsera del ojo turco:",
+            "text": "Ojo turco central en cristal con balines dorados o azules. Protección y estilo. Precio: $10.000 – $20.000 COP"
+          },
+          {
+            "label": "Pulsera con medalla de la Virgen:",
+            "text": "Hilo encerado + medalla ovalada de la Virgen María. Elegante y con significado. Precio: $10.000 – $18.000 COP"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900&q=80",
+        "alt": "Flatlay de moda con ropa y accesorios",
+        "caption": "Tus accesorios complementan looks completos — muéstralos en contexto y venderás más."
+      },
+      {
+        "type": "heading",
+        "number": "5",
+        "title": "Collares Elegantes"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Collar de cadena con dije de letra:",
+            "text": "Cadena dorada 45cm + dije de inicial en acero. El más vendido para regalos. Precio: $25.000 – $45.000 COP"
+          },
+          {
+            "label": "Collar tipo choker con cristal central:",
+            "text": "Cadena ajustada al cuello con un cristal llamativo al centro. Moderno. Precio: $20.000 – $38.000 COP"
+          },
+          {
+            "label": "Collar largo con perlas y dije:",
+            "text": "Cadena larga con perlas intercaladas y dije de corazón al final. Elegante. Precio: $30.000 – $55.000 COP"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "6",
+        "title": "Aretes Modernos"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Aretes de argolla con cristal colgante:",
+            "text": "Argollas doradas medianas con un cristal facetado colgando. Versátiles. Precio: $12.000 – $25.000 COP"
+          },
+          {
+            "label": "Aretes tipo gota con perla:",
+            "text": "Base dorada con perla tipo gota colgante. Clásicos y femeninos. Precio: $15.000 – $28.000 COP"
+          },
+          {
+            "label": "Aretes largos con cadena y dije:",
+            "text": "Cadena fina con dije al final (estrella, luna). Modernos y juveniles. Precio: $10.000 – $22.000 COP"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1655111379423-b85edc4da9ac?w=900&q=80",
+        "alt": "Artesana creando bisutería con sus manos",
+        "caption": "Cada diseño de este catálogo puedes hacerlo tú — el valor está en tus manos."
+      },
+      {
+        "type": "tip",
+        "text": "No intentes hacer todos los diseños al mismo tiempo. Elige 5 que te gusten, perfecciónalos y luego amplía tu catálogo."
+      },
+      {
+        "type": "tip",
+        "text": "Toma nota de cuáles diseños te piden más. Esos son los que debes tener siempre en stock."
+      },
+      {
+        "type": "closing",
+        "text": "Recuerda: tu catálogo es tu carta de presentación — hazlo con orgullo y actualízalo con lo que más te compran."
+      }
+    ]
+  },
+  {
+    "id": "guia-proveedores",
+    "title": "Lista de Proveedores Económicos de Materiales",
+    "subtitle": "Encuentra los mejores materiales al mejor precio — porque tu margen empieza en la compra.",
+    "emoji": "🛒",
+    "color": "#0891B2",
+    "bg": "#ECFEFF",
+    "readTime": "6 min",
+    "category": "Insumos",
+    "sections": [
+      {
+        "type": "intro",
+        "text": "Conseguir buenos materiales a buen precio es clave para que tu negocio sea rentable. En esta guía te compartimos opciones de proveedores en Colombia y Latinoamérica, tanto en tiendas físicas como online."
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1597484661973-ee6cd0b6482c?w=900&q=80",
+        "alt": "Herramientas y materiales de manualidades organizados",
+        "caption": "Buenos materiales a buen precio son la base de un negocio rentable."
+      },
+      {
+        "type": "heading",
+        "number": "1",
+        "title": "Dónde comprar Balines"
+      },
+      {
+        "type": "text",
+        "text": "Son la base de muchas pulseras. Busca balines en acero, goldfield o fantasía:"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Tiendas del centro:",
+            "text": "Medellín: Calle Colombia. Bogotá: San Victorino. Cali: Centro. Compra y compara en persona."
+          },
+          {
+            "label": "Mercado Libre Colombia:",
+            "text": "Busca 'balines bisutería por mayor'. Desde $8.000 × 100 unidades."
+          },
+          {
+            "label": "Shopee Colombia:",
+            "text": "Precios muy competitivos en paquetes grandes. Ideal para stock mensual."
+          },
+          {
+            "label": "Proveedores en Instagram:",
+            "text": "Busca #insumosbisuteriacolombia y pide catálogo por mensaje directo."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "2",
+        "title": "Dónde comprar Cristales"
+      },
+      {
+        "type": "text",
+        "text": "Cristales facetados, tipo Swarovski, bicono o rondel:"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "San Victorino (Bogotá):",
+            "text": "La mayor variedad de cristales en Colombia, con precios por mayor muy bajos."
+          },
+          {
+            "label": "Mercado Libre:",
+            "text": "Busca 'cristales facetados bisutería'. Desde $5.000 × 50 unidades."
+          },
+          {
+            "label": "AliExpress:",
+            "text": "Para compras grandes. Tarda 20-40 días. Precios imbatibles si compras 200+ unidades."
+          },
+          {
+            "label": "Tiendas de manualidades:",
+            "text": "En toda ciudad hay. Pregunta siempre por precio al por mayor desde 50 unidades."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "3",
+        "title": "Dónde comprar Perlas y Dijes"
+      },
+      {
+        "type": "text",
+        "text": "Perlas de fantasía, de vidrio o acrílicas — y dijes metálicos de zamak, acero o fantasía:"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Perlas en Mercado Libre:",
+            "text": "Desde $6.000 × 100 unidades. Amplia variedad de colores y tamaños."
+          },
+          {
+            "label": "Perlas en AliExpress:",
+            "text": "Perlas de vidrio por paquetes de 200+ a precios increíbles."
+          },
+          {
+            "label": "Dijes en San Victorino:",
+            "text": "La mejor variedad de dijes en Colombia. Metálicos, zamak, acero y fantasía."
+          },
+          {
+            "label": "Dijes en AliExpress:",
+            "text": "Desde $200 COP c/u comprando 50+. Pide siempre muestras antes del pedido grande."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1609428126821-b26911b6d662?w=900&q=80",
+        "alt": "Cuentas de colores organizadas en caja con compartimentos",
+        "caption": "Tener los materiales organizados por tipo te ahorra tiempo y te ayuda a controlar el inventario."
+      },
+      {
+        "type": "heading",
+        "number": "4",
+        "title": "Dónde comprar Cadenas e Hilos"
+      },
+      {
+        "type": "text",
+        "text": "Cadenas por metro en diferentes estilos, e hilos encerado, chino, nylon y seda:"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Cadenas en tiendas de insumos:",
+            "text": "Compra por metro. Desde $1.000/metro en fantasía. Hay dorada, plateada y rosada."
+          },
+          {
+            "label": "Cadenas en AliExpress:",
+            "text": "Por rollo de 5-10 metros. Muy económico para producción constante."
+          },
+          {
+            "label": "Hilos en papelerías y manualidades:",
+            "text": "Hilo encerado desde $3.000 el rollo. Variedad de colores y grosores."
+          },
+          {
+            "label": "Hilos en AliExpress:",
+            "text": "Rollos de 100 metros a precios increíbles. Ideal para compra mensual."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "5",
+        "title": "Consejos para comprar materiales"
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Siempre pide precio al por mayor desde 50 o 100 unidades — el descuento puede ser del 40-60%.",
+          "Compara en al menos 3 proveedores antes de comprar. Los precios varían mucho.",
+          "Pide muestras antes de hacer un pedido grande — especialmente en AliExpress.",
+          "Guarda los contactos de tus mejores proveedores y pide precio antes de cada compra.",
+          "Haz pedidos mensuales para mantener stock sin sobreinvertir en materiales que no usas."
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1624613673129-d5ffef60eba8?w=900&q=80",
+        "alt": "Cuentas azules y plateadas sobre superficie de madera",
+        "caption": "Comprar bien los materiales puede aumentar tu margen de ganancia sin subir el precio de venta."
+      },
+      {
+        "type": "tip",
+        "text": "Crea un grupo de WhatsApp con otros emprendedores de bisutería para compartir contactos de proveedores y conseguir mejores precios."
+      },
+      {
+        "type": "tip",
+        "text": "Si compras en AliExpress, haz el pedido con al menos 1 mes de anticipación por los tiempos de envío."
+      },
+      {
+        "type": "tip",
+        "text": "Guarda siempre un 'fondo de materiales': una cantidad de dinero separada solo para reponer insumos y nunca quedarte sin stock."
+      },
+      {
+        "type": "closing",
+        "text": "Recuerda: tu ganancia empieza en el momento en que compras — compra inteligente y produce con rentabilidad."
+      }
+    ]
+  },
+  {
+    "id": "guia-fotos",
+    "title": "Guía para Tomar Fotos Bonitas con el Celular",
+    "subtitle": "Fotos profesionales sin cámara profesional — con estos trucos tu celular es todo lo que necesitas.",
+    "emoji": "📸",
+    "color": "#DB2777",
+    "bg": "#FDF2F8",
+    "readTime": "7 min",
+    "category": "Marketing",
+    "sections": [
+      {
+        "type": "intro",
+        "text": "Una buena foto puede ser la diferencia entre vender o no vender. No necesitas una cámara profesional: con tu celular y estos consejos vas a lograr fotos que se vean increíbles y hagan que tus accesorios sean irresistibles."
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=900&q=80",
+        "alt": "Flatlay de moda con ropa y accesorios bien compuesta",
+        "caption": "La composición y el fondo hacen toda la diferencia — y no cuestan nada."
+      },
+      {
+        "type": "heading",
+        "number": "1",
+        "title": "Iluminación: la clave de todo"
+      },
+      {
+        "type": "text",
+        "text": "La luz natural es tu mejor amiga y es completamente gratis:"
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Toma fotos cerca de una ventana, de preferencia por la mañana (entre 8am y 11am).",
+          "Nunca uses flash — aplana los colores y crea sombras feas en los accesorios.",
+          "En días nublados la luz es más pareja y suave, ideal para bisutería con brillos.",
+          "Si el sol es muy fuerte, pon una cortina blanca para difuminar y suavizar la luz."
+        ]
+      },
+      {
+        "type": "tip",
+        "text": "La mejor hora para fotos es la 'hora dorada': justo después del amanecer o antes del atardecer. La luz es cálida y favorecedora para los tonos dorados y plateados."
+      },
+      {
+        "type": "heading",
+        "number": "2",
+        "title": "Fondos que hacen brillar tus accesorios"
+      },
+      {
+        "type": "text",
+        "text": "El fondo debe ser limpio y no competir visualmente con tu accesorio:"
+      },
+      {
+        "type": "table",
+        "headers": ["Fondo", "Ideal para", "Dónde conseguirlo"],
+        "rows": [
+          ["Blanco liso", "Todo tipo de accesorios", "Cartulina blanca ($500)"],
+          ["Mármol", "Accesorios elegantes", "Papel contacto tipo mármol ($5.000)"],
+          ["Madera clara", "Estilo natural/bohemio", "Tabla de cocina o piso laminado"],
+          ["Tela de lino", "Look artesanal y premium", "Corte de tela ($3.000)"],
+          ["Negro mate", "Accesorios dorados y brillantes", "Cartulina negra ($500)"]
+        ],
+        "highlight": []
+      },
+      {
+        "type": "heading",
+        "number": "3",
+        "title": "Ángulos recomendados"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Cenital (desde arriba):",
+            "text": "Ideal para pulseras y sets. Pon el accesorio plano y toma la foto desde arriba. Perfecto para flatlays."
+          },
+          {
+            "label": "45 grados:",
+            "text": "Perfecto para collares y aretes. Muestra volumen y detalle del accesorio."
+          },
+          {
+            "label": "De frente:",
+            "text": "Bueno para aretes puestos en un exhibidor o tarjeta de presentación."
+          },
+          {
+            "label": "Close-up / Detalle:",
+            "text": "Acércate mucho para mostrar la calidad de los materiales — los cristales y balines brillan más."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1535556116002-6281ff3e9f36?w=900&q=80",
+        "alt": "Aretes dorados sobre cuaderno y mármol — fotografía de producto",
+        "caption": "Este tipo de foto plana con fondo neutro es exactamente lo que debes replicar con tu celular."
+      },
+      {
+        "type": "heading",
+        "number": "4",
+        "title": "Cómo aprovechar la luz natural"
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Coloca tu accesorio cerca de la ventana (a 30-50 cm) para aprovechar la luz difusa.",
+          "Pon una hoja blanca al lado opuesto de la ventana para reflejar luz y eliminar sombras duras.",
+          "Nunca pongas el accesorio directamente bajo el sol — crea sombras marcadas que arruinan la foto.",
+          "Si fotografías algo brillante, muévelo ligeramente hasta que captures el destello perfecto."
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "5",
+        "title": "Cómo hacer fotos que parezcan profesionales"
+      },
+      {
+        "type": "tips-list",
+        "items": [
+          "Limpia tu lente antes de cada sesión — un paño suave elimina huellas que opacan la nitidez.",
+          "Usa el modo retrato de tu celular para desenfocar el fondo y resaltar el accesorio.",
+          "No hagas zoom digital — acércate físicamente al accesorio para mejor calidad.",
+          "Toma al menos 10 fotos de cada accesorio y elige las 2-3 mejores.",
+          "Usa la cuadrícula del celular para centrar bien el accesorio.",
+          "Deja espacio alrededor del accesorio — no lo llenes todo, el espacio en blanco es elegante."
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "6",
+        "title": "Apps gratuitas para mejorar tus fotos"
+      },
+      {
+        "type": "table",
+        "headers": ["App", "Para qué sirve", "Disponible en"],
+        "rows": [
+          ["Snapseed", "Edición completa: brillo, contraste, nitidez", "Android / iOS"],
+          ["Lightroom Mobile", "Filtros profesionales y presets", "Android / iOS"],
+          ["Canva", "Agregar texto, marcos, logos a tus fotos", "Android / iOS / Web"],
+          ["Remove.bg", "Quitar el fondo de la foto en segundos", "Web"],
+          ["VSCO", "Filtros estéticos muy populares en redes", "Android / iOS"]
+        ],
+        "highlight": []
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&q=80",
+        "alt": "Teléfono inteligente con apps de cámara y redes sociales",
+        "caption": "Tu celular + buena luz + fondo limpio = fotos que venden. No necesitas más."
+      },
+      {
+        "type": "tip",
+        "text": "Edita todas tus fotos con el mismo filtro o estilo. Esto crea una identidad visual coherente en tus redes que comunica profesionalismo."
+      },
+      {
+        "type": "tip",
+        "text": "Toma fotos del accesorio solo Y también puesto (en mano, cuello, oreja). Las fotos 'en uso' venden mucho más que las de producto solo."
+      },
+      {
+        "type": "tip",
+        "text": "Dedica 1 hora a la semana para hacer todas las fotos. Así tienes contenido listo para toda la semana sin improvisar."
+      },
+      {
+        "type": "closing",
+        "text": "Recuerda: la primera impresión la da la foto — invierte tiempo en tomarla bien y tus ventas lo notarán."
+      }
+    ]
+  },
+  {
+    "id": "guia-combos",
+    "title": "Ideas de Combos de Accesorios para Vender Más",
+    "subtitle": "Aumenta tu ticket promedio con combos irresistibles — vende más piezas en cada pedido.",
+    "emoji": "🎁",
+    "color": "#EA580C",
+    "bg": "#FFF7ED",
+    "readTime": "8 min",
+    "category": "Ventas",
+    "sections": [
+      {
+        "type": "intro",
+        "text": "Vender por combo es una de las estrategias más efectivas para aumentar tus ganancias. Un combo bien armado hace que tu clienta sienta que está obteniendo más valor por su dinero, y tú aumentas tu ticket promedio de venta sin producir más piezas."
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&q=80",
+        "alt": "Collar de perlas en caja de joyería roja",
+        "caption": "Un accesorio en su caja ya parece un regalo — un combo en su caja es irresistible."
+      },
+      {
+        "type": "heading",
+        "number": "1",
+        "title": "Combo: Pulsera + Aretes"
+      },
+      {
+        "type": "text",
+        "text": "Este es el combo más popular y fácil de armar. Presenta siempre el precio individual junto al precio combo — la clienta debe ver cuánto 'ahorra':"
+      },
+      {
+        "type": "table",
+        "headers": ["Producto", "Precio individual", "Precio en combo"],
+        "rows": [
+          ["Pulsera de cristales dorados", "$18.000", "—"],
+          ["Aretes de cristal a juego", "$15.000", "—"],
+          ["TOTAL individual", "$33.000", "—"],
+          ["COMBO", "—", "$28.000"],
+          ["Ahorro para la clienta", "—", "$5.000"]
+        ],
+        "highlight": [3, 4]
+      },
+      {
+        "type": "tip",
+        "text": "Presenta siempre el precio individual junto al precio combo. La clienta debe ver cuánto 'ahorra' — ese contraste activa la decisión de compra."
+      },
+      {
+        "type": "heading",
+        "number": "2",
+        "title": "Combo: Collar + Pulsera"
+      },
+      {
+        "type": "table",
+        "headers": ["Producto", "Precio individual", "Precio en combo"],
+        "rows": [
+          ["Collar de cadena con dije", "$35.000", "—"],
+          ["Pulsera a juego", "$18.000", "—"],
+          ["TOTAL individual", "$53.000", "—"],
+          ["COMBO", "—", "$45.000"],
+          ["Ahorro para la clienta", "—", "$8.000"]
+        ],
+        "highlight": [3, 4]
+      },
+      {
+        "type": "heading",
+        "number": "3",
+        "title": "Sets de regalo para fechas especiales"
+      },
+      {
+        "type": "text",
+        "text": "Los sets de regalo son perfectos para las fechas donde la gente más compra accesorios:"
+      },
+      {
+        "type": "table",
+        "headers": ["Fecha", "Set sugerido", "Precio sugerido"],
+        "rows": [
+          ["Día de la Madre", "Collar + pulsera + aretes + caja regalo", "$60.000 – $80.000"],
+          ["San Valentín", "2 pulseras de pareja + bolsa regalo", "$25.000 – $40.000"],
+          ["Navidad", "Set de 3 pulseras + caja navideña", "$30.000 – $50.000"],
+          ["Cumpleaños", "Pulsera personalizada + aretes + empaque", "$35.000 – $55.000"],
+          ["Día del Amigo", "Pack de 2 pulseras de la amistad", "$18.000 – $28.000"],
+          ["Graduación", "Collar con inicial + pulsera + caja", "$45.000 – $70.000"]
+        ],
+        "highlight": []
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?w=900&q=80",
+        "alt": "Caja kraft con cinta rosada de regalo",
+        "caption": "El empaque del combo es parte de lo que compra la clienta — que se vea irresistible."
+      },
+      {
+        "type": "heading",
+        "number": "4",
+        "title": "Combos para fechas especiales del año"
+      },
+      {
+        "type": "text",
+        "text": "Planifica tus combos con anticipación para cada fecha importante del calendario:"
+      },
+      {
+        "type": "table",
+        "headers": ["Mes", "Fecha", "Combo recomendado"],
+        "rows": [
+          ["Febrero", "San Valentín", "Pulseras de pareja"],
+          ["Marzo", "Día de la Mujer", "Set collar + aretes"],
+          ["Mayo", "Día de la Madre", "Set completo premium"],
+          ["Junio", "Día del Padre", "Pulsera masculina + empaque"],
+          ["Septiembre", "Amor y Amistad (COL)", "Pack pulseras amistad"],
+          ["Octubre", "Halloween", "Pulseras temáticas"],
+          ["Diciembre", "Navidad", "Sets de regalo navideños"]
+        ],
+        "highlight": []
+      },
+      {
+        "type": "heading",
+        "number": "5",
+        "title": "Cómo crear combos irresistibles"
+      },
+      {
+        "type": "rule-list",
+        "items": [
+          {
+            "label": "Que hagan juego:",
+            "text": "Usa los mismos colores y materiales en todas las piezas del combo — la coherencia visual eleva el valor percibido."
+          },
+          {
+            "label": "Añade valor percibido:",
+            "text": "Incluye empaque de regalo 'gratis' (ya lo cobraste en el precio). La clienta siente que recibe más."
+          },
+          {
+            "label": "Ponle nombre al combo:",
+            "text": "'Set Elegancia Dorada' suena mucho mejor que 'collar + pulsera'. El nombre vende."
+          },
+          {
+            "label": "Limita la disponibilidad:",
+            "text": "'Solo 10 sets disponibles' genera urgencia y acelera la decisión de compra."
+          },
+          {
+            "label": "Ofrece personalización:",
+            "text": "'Elige el color de tu combo' hace que las clientas se sientan especiales y únicas."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "number": "6",
+        "title": "Ejemplo de publicación para vender combos"
+      },
+      {
+        "type": "formula",
+        "label": "EJEMPLO DE PUBLICACIÓN",
+        "formula": "SET ELEGANCIA DORADA ✨\n\n• Collar de cadena con dije de corazón\n• Pulsera de cristales dorados a juego\n• Aretes tipo gota\n• Empaque de regalo incluido\n\nPrecio individual: $68.000\nPRECIO COMBO: $55.000\n¡Ahorras $13.000!\n\nSolo 8 sets disponibles.\nEscribe 'QUIERO' para apartar el tuyo.",
+        "note": "Esta estructura funciona en WhatsApp, Instagram y Facebook. El 'QUIERO' activa conversaciones que se convierten en ventas."
+      },
+      {
+        "type": "image",
+        "url": "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=900&q=80",
+        "alt": "Planta creciendo de monedas — crecimiento financiero",
+        "caption": "Vender combos es la forma más inteligente de crecer sin producir más — el mismo esfuerzo, más ganancia."
+      },
+      {
+        "type": "tip",
+        "text": "Arma los combos con accesorios que ya tengas en stock. No necesitas crear piezas nuevas para empezar a vender combos hoy."
+      },
+      {
+        "type": "tip",
+        "text": "El descuento del combo debe ser entre un 10% y 20% del precio individual total. Más de eso reduce tu margen innecesariamente."
+      },
+      {
+        "type": "tip",
+        "text": "Ofrece máximo 3-4 opciones de combo a la vez. Demasiadas opciones confunden al cliente y paralizan la decisión de compra."
+      },
+      {
+        "type": "closing",
+        "text": "Recuerda: un combo bien presentado no es un descuento — es una estrategia. Úsalo para vender más, no para cobrar menos."
+      }
+    ]
   }
 ]
